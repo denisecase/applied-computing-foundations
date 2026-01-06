@@ -1,0 +1,109 @@
+# ============================================================
+# .gitignore (Keep unnecessary files out of the repository)
+# ============================================================
+
+# REQ.UNIVERSAL: All professional GitHub project repositories MUST include .gitignore.
+# WHY: Prevent committing generated artifacts, local state, secrets, and OS-specific files.
+# ALT: Repository may customize ignores, but MUST preserve universal safety rules.
+# CUSTOM: Logs may be temporarily committed for verification; keep ignored for
+# production use and security.
+
+
+# === Universal (all projects, all languages) ===
+
+# WHY: Logs are useful during debugging and verification.
+# ALT: Uncomment temporarily if logs must be inspected or validated.
+# *.log
+# logs/
+PRIVATE_NOTES.md
+PRIVATE-NOTES.md
+
+# WHY: Temporary and swap files are machine-local noise and create meaningless diffs.
+*.swo
+*.swp
+*.tmp
+*~
+
+# === VS Code (special case) ===
+
+# WHY: Ignore editor state while allowing a shared baseline configuration.
+.vscode/
+
+# WHY: Commit recommended extensions (opt-in) for consistent development experience.
+# NOTE: Share recommendations, not personal editor styles or preferences.
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# === OS-specific files (macOS / Windows) ===
+
+# WHY: OS-generated metadata files should never be tracked.
+.AppleDouble
+.DS_Store
+.LSOverride
+Icon\r
+._*
+.Spotlight-V100/
+.Trashes
+desktop.ini
+ehthumbs.db
+Thumbs.db
+
+# === Editors / IDEs (non-VS Code) ===
+
+# WHY: IDE metadata is machine-local and should not be tracked.
+*.code-workspace
+.idea/
+
+# === Environment variables and secrets ===
+
+# WHY: Never commit credentials or environment-specific configuration.
+.env
+.env.*
+*.env
+
+# === Documentation build output ===
+
+# WHY: Static site build output is generated.
+site/
+
+# === Generic caches ===
+
+# WHY: Generic caches are machine-local and should not be tracked.
+.cache/
+
+# === Python (if used) ===
+
+# WHY: Virtual environments are machine-local and reproducible.
+.venv/
+venv/
+
+# REQ.PYTHON: Do NOT git ignore uv.lock. Commit it and use it in CI/CD pipelines.
+
+# WHY: Python version when using scm
+src/datafun_toolkit/_version.py
+
+# WHY: Python bytecode is generated.
+__pycache__/
+*.pyc
+*.pyd
+*.pyo
+
+# WHY: Build and packaging artifacts are generated.
+.eggs/
+build/
+dist/
+*.egg
+*.egg-info/
+*.whl
+
+# WHY: Tooling caches should not be tracked.
+.coverage
+.coverage.*
+.mypy_cache/
+.pytest_cache/
+.pytype/
+.ruff_cache/
+.tox/
+
+# WHY: Notebook checkpoint state is generated.
+.ipynb_checkpoints/

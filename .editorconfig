@@ -1,0 +1,125 @@
+# ============================================================
+# .editorconfig (Keep files consistent across editors and IDEs)
+# ============================================================
+
+# REQ.UNIVERSAL: All professional GitHub project repositories MUST include .editorconfig.
+# WHY: Establish a cross-editor baseline so diffs stay clean and formatting is consistent.
+# ALT: Repository may omit .editorconfig ONLY if formatting is enforced equivalently by CI and formatter tooling.
+# CUSTOM: Adjust indent_size defaults only if organizational standards change; keep stable across projects.
+# NOTE: Sections are ordered by editorial importance, not strict alphabetical order.
+# EditorConfig is documented at https://editorconfig.org
+
+root = true
+
+# === Global defaults (always apply) ===
+
+[*]
+# WHY: Normalize line endings and encoding across Windows, macOS, and Linux.
+end_of_line = lf
+charset = utf-8
+
+# WHY: Newline at EOF avoids noisy diffs and tool warnings.
+insert_final_newline = true
+
+# WHY: Remove accidental whitespace noise in diffs.
+trim_trailing_whitespace = true
+
+# WHY: Default to 2 spaces for configs and markup; language-specific overrides follow.
+indent_style = space
+indent_size = 2
+
+
+# === Build systems (special rules) ===
+
+[Makefile]
+# WHY: Makefiles require tabs.
+indent_style = tab
+
+[*.mk]
+# WHY: Makefile includes require tabs.
+indent_style = tab
+
+
+# === Citation and metadata ===
+
+[CITATION.cff]
+# WHY: Citation tooling expects stable YAML formatting.
+indent_size = 2
+indent_style = space
+
+
+# === Markup and documentation ===
+
+[*.md]
+# WHY: Keep Markdown clean; use explicit <br> for hard line breaks.
+indent_size = 2
+trim_trailing_whitespace = true
+
+[*.{tex,cls,sty}]
+# WHY: LaTeX convention is 2 spaces.
+indent_size = 2
+indent_style = space
+
+[*.xml]
+# WHY: XML convention is 2 spaces.
+indent_size = 2
+indent_style = space
+
+[*.{yml,yaml}]
+# WHY: YAML convention is 2 spaces.
+indent_size = 2
+indent_style = space
+
+
+# === Data and configuration ===
+
+[*.{json,jsonc,jsonl,ndjson}]
+# WHY: JSON tooling typically expects 2 spaces.
+indent_size = 2
+indent_style = space
+
+[*.toml]
+# WHY: TOML often follows 4-space indentation in many projects.
+indent_size = 4
+indent_style = space
+
+
+# === Programming languages ===
+
+[*.{js,ts}]
+# WHY: JS/TS ecosystem commonly uses 2 spaces.
+indent_size = 2
+indent_style = space
+
+[*.{py,pyi}]
+# WHY: Python convention is 4 spaces.
+indent_size = 4
+indent_style = space
+
+[*.ps1]
+# WHY: PowerShell convention is 4 spaces.
+indent_size = 4
+indent_style = space
+
+[*.{c,cpp,h,java,cs,go,rs}]
+# WHY: Many C-family and systems languages commonly use 4 spaces.
+indent_size = 4
+indent_style = space
+
+[*.{sh,bash}]
+# WHY: Shell script convention is 2 spaces.
+indent_size = 2
+indent_style = space
+
+
+# === Proof assistants and formal languages ===
+
+[*.lean]
+# WHY: Lean 4 convention is 2 spaces; matches Mathlib and stdlib style.
+indent_size = 2
+indent_style = space
+
+[*.{v,vo}]
+# WHY: Coq convention is 2 spaces.
+indent_size = 2
+indent_style = space

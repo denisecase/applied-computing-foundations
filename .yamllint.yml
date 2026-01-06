@@ -1,0 +1,15 @@
+# ============================================================
+# .yamllint.yml (Keep YAML files clean and consistent)
+# ============================================================
+
+# WHY: Enforce YAML correctness (.yamllint.yml) without arbitrary style constraints.
+# OBS: Default yamllint rules conflict with GitHub Actions YAML.
+#      Line length, document start, truthy, and comment spacing are intentionally disabled.
+
+extends: default
+
+rules:
+  line-length: disable
+  document-start: disable
+  truthy: disable
+  comments: disable

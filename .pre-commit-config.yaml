@@ -1,0 +1,100 @@
+# ============================================================
+# .pre-commit-config.yaml (Markdown Hygiene)
+# ============================================================
+# VARIANT: markdown-hygiene
+# SOURCE: https://github.com/denisecase/templates
+#
+# REQ: Documentation-only repos MAY include a .pre-commit-config.yaml for repo hygiene (optional).
+# WHY: Keep Markdown diffs clean across OSes and prevent common documentation commit errors.
+#
+# OBS: These hooks use and do NOT override:
+#   - .editorconfig (whitespace / indentation)
+#   - .gitattributes (EOL normalization)
+#
+# OPTIONAL LOCAL USAGE (no repo venv required):
+#   Install uv (once, user-level).
+#   uv self update
+#   uvx pre-commit install
+#   uvx pre-commit run --all-files (just once, to check all files)
+# Subsequent commits will AUTOMATICALLY run pre-commit hooks after git add
+# and before git commit.
+#
+# NOTE: pre-commit is optional.
+#   Repositories do NOT require Python, uv, or pre-commit to clone or commit.
+
+exclude: |
+  (?x)^(
+    \.DS_Store|
+    \.coverage|
+    \.ipynb_checkpoints/|
+    \.mypy_cache/|
+    \.nox/|
+    \.pytest_cache/|
+    \.ruff_cache/|
+    \.tox/|
+    \.venv/|
+    .*\.(egg-info)/|
+    .*\.log|
+    __pycache__/|
+    _minted.*/|
+    build/|
+    coverage\.xml|
+    dist/|
+    htmlcov/|
+    lake-packages/|
+    node_modules/|
+    out/|
+    site/
+  )
+
+repos:
+  # === REPO: PRE-COMMIT HOOKS (cross-platform, zero configu) ===
+  #
+  # These hooks prevent problems that show up later as:
+  #   - mysterious diffs
+  #   - broken builds on another OS
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      # === PRE-COMMIT: NORMALIZE FILE FORMATTING ===
+
+      - id: trailing-whitespace
+        name: A1) Clean trailing whitespace (per .editorconfig)
+        args: [--markdown-linebreak-ext=md] # Preserves markdown double-space line breaks
+
+      - id: end-of-file-fixer
+        name: A2) End files with a newline (per .gitattributes)
+
+      - id: mixed-line-ending
+        name: A3) Normalize line endings to LF before linters
+        args: [--fix=lf] # OBS: Windows working copies may be CRLF.
+
+      #  === PRE-COMMIT: CHECK DATA FILE FORMATS ===
+
+      - id: check-json
+        name: B1) Validate JSON syntax
+
+      - id: check-toml
+        name: B2) Validate TOML syntax
+
+      - id: check-yaml
+        name: B3) Validate YAML syntax
+        files: \.(yml|yaml)$
+        exclude: ^mkdocs\.ya?ml$ # OBS: mkdocs.yaml may include non-standard tags.
+
+      # === PRE-COMMIT:CHECK FOR COMMON PROBLEMS ===
+
+      - id: check-added-large-files
+        name: C1) Prevent accidental commits of large binaries
+        args: [--maxkb=500]
+
+      - id: check-merge-conflict
+        name: C2) Prevent committing merge conflicts
+
+      - id: check-case-conflict
+        name: C3) Check for filename case conflicts
+
+# === GLOBAL SETTINGS ===
+# ALT: Set fail_fast to true to stop at first failure.
+fail_fast: false # Run all hooks even if one fails

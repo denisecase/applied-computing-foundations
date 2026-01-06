@@ -1,0 +1,45 @@
+# ============================================================
+# pyproject.toml (Python and MkDocs project configuration)
+# ============================================================
+
+# REQ.PYTHON: Python projects MUST include pyproject.toml as the single source of truth.
+# WHY: Centralizes project configuration.
+
+[project]
+name = "applied-computing-foundations"
+version = "0.0.0"
+description = "Documentation for computing foundations."
+readme = "README.md"
+requires-python = ">=3.12"
+license = "MIT"
+authors = [
+  { name = "Denise Case", email = "dcase@nwmissouri.edu" }
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+  "pre-commit",
+  "validate-pyproject",
+]
+docs = [
+  "mike",
+  "mkdocs",
+  "mkdocs-gen-files",
+  "mkdocs-git-revision-date-localized-plugin",
+  "mkdocs-include-markdown-plugin",
+  "mkdocs-literate-nav",
+  "mkdocs-material",
+  "mkdocs-static-i18n",
+  "mkdocstrings[python]",
+  "pymdown-extensions",
+  "ruff",
+]
+
+[project.urls]
+"Home" = "https://denisecase.github.io/applied-computing-foundations/"
+"Repo" = "https://github.com/denisecase/applied-computing-foundations"
+"Issues" = "https://github.com/denisecase/applied-computing-foundations/issues"
+
+[tool.uv]
+package = false

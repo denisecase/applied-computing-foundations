@@ -1,0 +1,75 @@
+# ============================================================
+# SE_MANIFEST.toml (Repository Intent, Scope, and Role)
+# ============================================================
+
+schema = "se-manifest-1"
+schema_url = "https://github.com/structural-explainability/spec-se/blob/main/manifests/se-manifest-1.md"
+
+[meta]
+# Non-normative contextual information
+framework = "Structural Explainability"
+framework_url = "https://github.com/structural-explainability"
+framework_note = "Provides definitions and conventions for SE_MANIFEST semantics."
+description = "Declarative claim of repository intent, scope, and role."
+purpose = "To make explicit the boundaries, responsibilities, and expectations of this repository relative to others."
+
+[repo]
+name = "applied-computing-foundations"
+org = "denisecase"
+kind = "software"
+status = "academic"
+since = "2026"
+summary = "Foundational, cross-cutting computing skills for file systems, terminals, shells, and text processing."
+
+[layer]
+space = "Computing Foundations"
+role = "post-secondary-education"
+
+[depends]
+required = []
+optional = [
+    "bash",
+    "powershell",
+    "gnu-coreutils",
+    "grep",
+    "sed",
+    "awk",
+    "regex engines",
+    "mkdocs"
+]
+
+[provides]
+artifacts = [
+    "ANNOTATIONS.md",
+    "CITATION.cff",
+    "LICENSE",
+    "README.md",
+    "SE_MANIFEST.toml",
+    "docs/"
+]
+
+[scope]
+includes = [
+    "file system navigation and organization",
+    "terminal and shell usage (bash, PowerShell)",
+    "shell scripting fundamentals",
+    "text processing tools (grep, sed, awk)",
+    "regular expressions",
+    "cross-platform command-line workflows",
+    "non-language-specific computing practices"
+]
+excludes = [
+    "Python programming",
+    "data analytics methods",
+    "statistical modeling",
+    "machine learning",
+    "course-specific project repositories"
+]
+
+[citation]
+cff = "CITATION.cff"
+preferred = "repo"
+bib_hint = "case2026-applied-computing-foundations"
+
+[traceability]
+identifier_map = "none"

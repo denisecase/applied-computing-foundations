@@ -1,0 +1,61 @@
+# ============================================================
+# CITATION.cff (How to cite this project)
+# ============================================================
+
+# REQ.UNIVERSAL: Professional open projects SHOULD include CITATION.cff.
+# WHY: Support correct citation and attribution.
+# ALT: Internal or private repositories may omit citation metadata.
+# CUSTOM: Update author, repository, license, and keyword fields as needed.
+# USAGE: See https://citation-file-format.github.io/ for details.
+
+cff-version: "1.2.0"
+type: software
+
+title: "Applied Computing Foundations"
+version: "0.9.0"
+date-released: "2026-01"
+
+authors:
+  - family-names: Case
+    given-names: Denise M.
+    orcid: "https://orcid.org/0000-0001-6165-7389"
+
+repository-code: "https://github.com/denisecase/applied-computing-foundations"
+url: "https://github.com/denisecase/applied-computing-foundations"
+license: MIT
+
+keywords:
+  # domain
+  - computing-foundations
+  - command-line
+  - file-systems
+  - shell
+  - text-processing
+  - regular-expressions
+
+  # audience
+  - education
+  - teaching
+  - learning
+  - students
+  - instructors
+  - computer-science-education
+
+  # practices
+  - cross-platform
+  - developer-fluency
+  - non-language-specific
+  - professional-practice
+
+  # tools and ecosystems
+  - git
+  - github
+  - open-source
+
+abstract: >
+  Foundational, cross-cutting computing skills for working with file systems,
+  command-line environments, shells, text-processing tools, and repositories.
+  This project focuses on practical computing fluency independent of
+  any specific programming language or analytics framework.
+
+message: "If you use this project, please cite it as described in this file."

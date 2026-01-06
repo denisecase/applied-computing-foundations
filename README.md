@@ -1,33 +1,71 @@
- # Applied Computer Organization
+ # Applied Computing Foundations
 
-Essential skills such as displaying file extensions, revealing hidden files, and navigating file systems using tools like File Explorer (Windows) or Finder (macOS).
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/license/MIT)
+[![Docs (MkDocs)](https://github.com/denisecase/applied-computing-foundations/actions/workflows/deploy-mkdocs.yml/badge.svg?branch=main)](https://denisecase.github.io/applied-computing-foundations/)
+![Build Status](https://github.com/denisecase/applied-computing-foundations/actions/workflows/ci-hygiene-mkdocs.yml/badge.svg?branch=main)
+[![Check Links](https://github.com/denisecase/applied-computing-foundations/actions/workflows/links.yml/badge.svg)](https://github.com/denisecase/applied-computing-foundations/actions/workflows/links.yml)
+[![Dependabot](https://img.shields.io/badge/Dependabot-enabled-brightgreen.svg)](https://github.com/denisecase/applied-computing-foundations/security/dependabot)
 
-## Why This is Important
+> Applied computing foundations, including how to set up a place for
+repositories, how to view file extensions, and how to work with hidden files
+and folders.
 
-1. Understand File Types: Knowing file extensions is critical to identifying and working with files.
-2. Access Hidden Files: Sometimes project files are hidden by default. Learning how to reveal them is necessary for some tasks.
-3. Navigate Efficiently: Mastering file navigation saves time and prevents errors.
+See the hosted documentation at <https://denisecase.github.io/applied-computing-foundations/>.
 
-## Tasks Overview
+## Requirements
 
-These tasks are different depending on the operating system. 
-Please choose the appropriate guide.
+Nothing is required to use the documentation site linked above.
 
-- [Windows Instructions](windows.md)
-- [macOS/Linux Instructions](mac_linux.md)
+## Developer (Updating The Documentation)
 
-## Know These Terms
+Pre-commit is optional; CI will report exact commands if it fails.
 
-- Administrator - a user with elevated permissions including create, delete, and modify settings and items
-- Context menu - a pop-up menu, typically avaiable when right-clicking on an item
-- File name - the complete name + extension of the file OR the part that comes before the . and extension
-- File extension - the part at the end of the file that indicates its type (e.g. doc, xls, md, html)
-- Folder / directory - a place to store files on your computer
-- Hidden files - files not displayed to typical users
-- Operating system - software that provides a computer's most basic functions such as connecting devices and executing applications
-- System files - files used by Windows that should not be modified by users
-- Windows - a popular operating system
-- Windows File Explorer - a graphical interface to folders and files on Windows
-- macOS - an operating system used on Apple computers (Macs)
-- Finder - the graphical interface to folders and files on macOS
-- Linux - an open-source operating system, often used in server environments
+Steps to run pre-commit locally. Install `uv`.
+In GitHub Repository Settings, click `Pages` on the left, then
+set `Build and Deploy` / `Source` to **GitHub Actions**.
+
+Initialize once:
+
+```shell
+uv self update
+uv python pin 3.12
+uv sync --extra dev --extra docs --upgrade
+uvx pre-commit install
+uvx pre-commit run --all-files
+```
+
+Build and serve docs:
+
+```shell
+uv run mkdocs build --strict
+uv run mkdocs serve
+```
+
+> To stop a running Python program, press `Ctrl + C` in the terminal
+
+Save progress:
+
+```shell
+git add -A
+# If pre-commit makes changes, re-run `git add -A` before committing.
+git commit -m "update"
+git push -u origin main
+```
+
+
+
+## Annotations
+
+[ANNOTATIONS.md](./ANNOTATIONS.md)
+
+## Citation
+
+[CITATION.cff](./CITATION.cff)
+
+## License
+
+[MIT](./LICENSE)
+
+## SE Manifest
+
+[SE_MANIFEST.md](./SE_MANIFEST.toml)

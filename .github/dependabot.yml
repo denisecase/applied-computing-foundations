@@ -1,0 +1,23 @@
+# .github/dependabot.yml
+#
+# REQ.PROJECT: This repository SHOULD track GitHub Actions updates automatically.
+# WHY: GitHub Actions are executable dependencies and may receive security or behavior updates.
+# OBS: Language-level dependencies (e.g., Python packages) are upgraded manually.
+# OBS: GitHub Actions are the only dependency class automated here.
+# ALT: Dependabot could be omitted if workflows are pinned and reviewed manually.
+# CUSTOM: Update interval if CI cadence or security posture changes.
+
+# NOTE: This file automatically updates the versions used in Actions workflows.
+# You don't need to modify this file.
+# To disable: Delete this file or set enabled: false below.
+# enabled: false # Uncomment to disable Dependabot
+
+version: 2 # Dependabot configuration version
+
+updates:
+  - package-ecosystem: "github-actions" # Dependency type
+    directory: "/" # Location of GitHub Actions workflows
+    schedule:
+      interval: "monthly" # ALT: Use "weekly" for higher security when needed
+    commit-message:
+      prefix: "(deps)"  # WHY: enable filtering by commit type

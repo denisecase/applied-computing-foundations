@@ -1,0 +1,90 @@
+# ============================================================
+# .github/workflows/ci-hygiene-mkdocs.yml (Continuous Integration)
+# ============================================================
+# SOURCE: https://github.com/denisecase/templates
+#
+# WHY-FILE: Validate repository hygiene and documentation builds.
+# REQ: Any check that can be run locally MUST be available locally via pre-commit.
+# REQ: CI MUST NOT introduce arbitrary rules that are not reproducible locally.
+# OBS: CI validates only; it never edits files or deploys docs.
+
+name: CI Hygiene (MkDocs Site)
+
+# WHY: Validate docs and repo metadata on PRs and pushes.
+# OBS: This workflow validates only; it never deploys.
+
+on:
+  push:
+    branches: [main] # WHY: Run when pushing to main branch.
+  pull_request:
+    branches: [main] # WHY: Run on pull requests targeting main branch.
+  workflow_dispatch: # WHY: Allow manual triggering from Actions tab.
+
+permissions: # WHY: Use least privileges required.
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: "1" # WHY: Real-time logging.
+  PYTHONIOENCODING: "utf-8" # WHY: Ensure UTF-8 encoding for international characters.
+
+jobs:
+  ci:
+    name: Repository checks (pre-commit)
+    runs-on: ubuntu-latest # WHY: Linux environment matches most production deployments
+    timeout-minutes: 30 # WHY: Prevent hanging jobs. If over, it is likely stuck.
+
+
+    steps:
+      # ============================================================
+      # ASSEMBLE: Get code and set up environment
+      # ============================================================
+
+      - name: A1) Checkout repository code
+        # WHY: Needed to access files for checks.
+        uses: actions/checkout@v6
+
+      - name: A2) Run pre-commit (all files)
+        # WHY: Single source of truth for locally runnable quality gates.
+        # OBS: Fails if hooks would modify files; does not commit changes.
+        id: precommit # WHY: Identify step for conditional follow-up.
+        uses: pre-commit/action@v3.0.1
+        with:
+          extra_args: --all-files
+
+      - name: A2f) If pre-commit failed, run it locally
+        if: failure()
+        run: |
+          echo "## Pre-commit failed" >> "$GITHUB_STEP_SUMMARY"
+          echo "Please run pre-commit locally and commit the resulting changes." >> "$GITHUB_STEP_SUMMARY"
+
+
+      - name: A3) Install uv (with caching)
+        uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+
+      - name: A4) Install Python version 3.12
+        run: uv python install 3.12
+
+      - name: A5) Show tool versions
+        run: |
+          python --version
+          uv --version
+
+      - name: A6) Sync to install dependencies
+        run: uv sync --extra dev --extra docs --upgrade
+
+      # === BASELINE CHECKS ===
+
+      - name: B1) Validate pyproject
+        run: uvx validate-pyproject
+
+      # === DEPLOY (SANITY CHECKS ONLY; NO DEPLOY) ===
+
+      - name: D1) Build docs (mkdocs --strict)
+        run: |
+          if [ -f "mkdocs.yml" ] || [ -f "mkdocs.yaml" ]; then
+            uv run mkdocs build --strict
+          else
+            echo "No mkdocs config found; skipping docs build."
+          fi

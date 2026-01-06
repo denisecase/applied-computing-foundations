@@ -1,0 +1,71 @@
+# REQ.PROJECT: MkDocs configuration file (mkdocs.yaml)
+#      to automatically build an associated website
+#      for professional project documentation and communication.
+#      Requires:
+#         1. this file in the root of your project repository
+#         2. docs/ folder with markdown files (.md) for content
+#         3. GitHub Actions workflow to build and deploy site (in .github/workflows/)
+#
+# WHY: This data file provides the site structure and settings
+
+site_name: "Project Documentation"
+#TODO: Change to your GitHub Pages URL.
+site_url: https://denisecase.github.io/applied-computing-foundations/
+#TODO: Change to your GitHub repository URL.
+repo_url: https://github.com/denisecase/applied-computing-foundations
+site_description: Project documentation.
+docs_dir: docs
+site_dir: site
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      #TODO: Change to your GitHub repository URL.
+      link: https://github.com/denisecase/applied-computing-foundations
+
+# WHY: Material theme is industry standard, well-documented
+theme:
+  name: material
+  features:
+    - navigation.tabs # Top-level nav as tabs
+    - navigation.tabs.sticky # Keep tabs visible when scrolling
+    - navigation.expand
+    - navigation.top # Back-to-top button
+    - search.suggest # Search suggestions while typing
+    - search.highlight # Highlight search terms
+    - content.code.copy # Copy button on code blocks
+    - toc.follow # Highlight current section in TOC
+
+  palette:
+    - scheme: default # Light/dark mode toggle
+      primary: blue
+      accent: blue
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: blue
+      accent: blue
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+plugins:
+  - search # WHY: Built-in search functionality
+  - mkdocstrings:
+      handlers:
+        python:
+          paths:
+            - src/python/src
+          options:
+            show_source: true
+            show_root_heading: true # Include module names
+            show_root_toc_entry: true # Include module in TOC
+            docstring_style: google # Professional docstring format
+            show_signature_annotations: true
+            separate_signature: true # Makes function signatures easier to read
+
+nav:
+  - Home: index.md
+  - Glossary: glossary.md
+  - Repos/ on Mac/Linux: repos_on_mac_linux.md
+  - Repos/ on Windows: repos_on_windows.md
