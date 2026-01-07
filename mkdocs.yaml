@@ -1,3 +1,7 @@
+# ============================================================
+# mkdocs.yaml (MkDocs configuration file)
+# ============================================================
+
 # REQ.PROJECT: MkDocs configuration file (mkdocs.yaml)
 #      to automatically build an associated website
 #      for professional project documentation and communication.
@@ -6,7 +10,7 @@
 #         2. docs/ folder with markdown files (.md) for content
 #         3. GitHub Actions workflow to build and deploy site (in .github/workflows/)
 #
-# WHY: This data file provides the site structure and settings
+# WHY-FILE: This data file provides the site structure and settings
 
 site_name: "Project Documentation"
 #TODO: Change to your GitHub Pages URL.

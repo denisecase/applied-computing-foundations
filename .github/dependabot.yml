@@ -1,7 +1,10 @@
-# .github/dependabot.yml
+# ============================================================
+# .github/dependabot.yml (Check for GitHub Actions updates)
+# ============================================================
+# SOURCE: https://github.com/denisecase/templates
 #
 # REQ.PROJECT: This repository SHOULD track GitHub Actions updates automatically.
-# WHY: GitHub Actions are executable dependencies and may receive security or behavior updates.
+# WHY-FILE: GitHub Actions are executable dependencies and may receive security or behavior updates.
 # OBS: Language-level dependencies (e.g., Python packages) are upgraded manually.
 # OBS: GitHub Actions are the only dependency class automated here.
 # ALT: Dependabot could be omitted if workflows are pinned and reviewed manually.

@@ -27,16 +27,7 @@ role = "post-secondary-education"
 
 [depends]
 required = []
-optional = [
-    "bash",
-    "powershell",
-    "gnu-coreutils",
-    "grep",
-    "sed",
-    "awk",
-    "regex engines",
-    "mkdocs"
-]
+optional = ["python>=3.12", "uv", "mkdocs", "lychee"]
 
 [provides]
 artifacts = [
@@ -50,20 +41,15 @@ artifacts = [
 
 [scope]
 includes = [
-    "file system navigation and organization",
-    "terminal and shell usage (bash, PowerShell)",
-    "shell scripting fundamentals",
-    "text processing tools (grep, sed, awk)",
-    "regular expressions",
-    "cross-platform command-line workflows",
-    "non-language-specific computing practices"
+    "view hidden files and directories",
+    "view file extensions",
+    "understand file system structure",
+    "create a place for repositories",
 ]
 excludes = [
-    "Python programming",
-    "data analytics methods",
+    "programming",
+    "analytics",
     "statistical modeling",
-    "machine learning",
-    "course-specific project repositories"
 ]
 
 [citation]

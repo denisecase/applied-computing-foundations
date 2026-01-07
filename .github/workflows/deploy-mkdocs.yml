@@ -2,7 +2,8 @@
 # .github/workflows/deploy-docs.yml (Deploy MkDocs)
 # ============================================================
 # SOURCE: https://github.com/denisecase/templates
-# WHY: Build and deploy documentation to GitHub Pages on pushes to main.
+#
+# WHY-FILE: Build and deploy documentation to GitHub Pages on pushes to main.
 # REQ: Repo Settings -> Pages -> Build and deployment -> Source:
 #      GitHub Actions
 
