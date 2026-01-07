@@ -81,7 +81,7 @@ jobs:
 
       - name: C2) Upload Pages artifact
         # WHY: Package the built site for Pages deployment.
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: site
 
