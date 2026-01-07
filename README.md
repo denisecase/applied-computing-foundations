@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/license/MIT)
 [![Docs (MkDocs)](https://github.com/denisecase/applied-computing-foundations/actions/workflows/deploy-mkdocs.yml/badge.svg?branch=main)](https://denisecase.github.io/applied-computing-foundations/)
 ![Build Status](https://github.com/denisecase/applied-computing-foundations/actions/workflows/ci-hygiene-mkdocs.yml/badge.svg?branch=main)
-[![Check Links](https://github.com/denisecase/applied-computing-foundations/actions/workflows/links.yml/badge.svg)](https://github.com/denisecase/applied-computing-foundations/actions/workflows/links.yml)
+[![Check Links](https://github.com/denisecase/applied-computing-foundations/actions/workflows/links.yml/badge.svg?branch=main)](https://github.com/denisecase/applied-computing-foundations/actions/workflows/links.yml)
 [![Dependabot](https://img.shields.io/badge/Dependabot-enabled-brightgreen.svg)](https://github.com/denisecase/applied-computing-foundations/security)
 
 > Applied computing foundations, including how to set up a place for
