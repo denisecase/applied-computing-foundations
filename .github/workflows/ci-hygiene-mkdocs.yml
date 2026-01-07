@@ -29,10 +29,9 @@ env:
 
 jobs:
   ci:
-    name: Repository checks (pre-commit)
+    name: Repository checks and MkDocs build
     runs-on: ubuntu-latest # WHY: Linux environment matches most production deployments
-    timeout-minutes: 30 # WHY: Prevent hanging jobs. If over, it is likely stuck.
-
+    timeout-minutes: 30 # WHY: Prevent hanging jobs. If over time, it is likely stuck.
 
     steps:
       # ============================================================
@@ -57,11 +56,11 @@ jobs:
           echo "## Pre-commit failed" >> "$GITHUB_STEP_SUMMARY"
           echo "Please run pre-commit locally and commit the resulting changes." >> "$GITHUB_STEP_SUMMARY"
 
-
       - name: A3) Install uv (with caching)
         uses: astral-sh/setup-uv@v7
         with:
-          enable-cache: true
+          enable-cache: true # WHY: Speed up installs on subsequent runs
+          cache-dependency-glob: "uv.lock" # WHY: Only re-cache when dependencies change
 
       - name: A4) Install Python version 3.12
         run: uv python install 3.12
@@ -71,20 +70,24 @@ jobs:
           python --version
           uv --version
 
-      - name: A6) Sync to install dependencies
+      - name: A6) Sync to install all dependencies
         run: uv sync --extra dev --extra docs --upgrade
 
+      # ============================================================
       # === BASELINE CHECKS ===
+      # ============================================================
 
-      - name: B1) Validate pyproject
-        run: uvx validate-pyproject
+      - name: B1) validate-pyproject (must be in pyproject.toml deps)
+        run: uv run validate-pyproject pyproject.toml
 
-      # === DEPLOY (SANITY CHECKS ONLY; NO DEPLOY) ===
+      # ============================================================
+      # === DEPLOY: Build only, don't deploy yet ===
+      # ============================================================
 
       - name: D1) Build docs (mkdocs --strict)
         run: |
           if [ -f "mkdocs.yml" ] || [ -f "mkdocs.yaml" ]; then
-            uv run mkdocs build --strict
+            uv run mkdocs build --strict --verbose
           else
             echo "No mkdocs config found; skipping docs build."
           fi

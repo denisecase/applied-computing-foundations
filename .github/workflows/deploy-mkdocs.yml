@@ -74,18 +74,18 @@ jobs:
           fi
 
       # ============================================================
-      # BUILD: Build docs
+      # === DEPLOY: Build and deploy ===
       # ============================================================
 
-      - name: C1) Build docs (mkdocs --strict)
-        run: uv run mkdocs build --strict
+      - name: D1) Build docs (mkdocs --strict)
+        run: uv run mkdocs build --strict --verbose
 
-      - name: C2) Upload Pages artifact
+      - name: D2) Upload Pages artifact
         # WHY: Package the built site for Pages deployment.
         uses: actions/upload-pages-artifact@v4
         with:
           path: site
 
-      - name: C3) Deploy to GitHub Pages
+      - name: D3) Deploy to GitHub Pages
         # WHY: Publish artifact to GitHub Pages.
         uses: actions/deploy-pages@v4
