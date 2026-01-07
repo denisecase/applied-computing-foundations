@@ -18,7 +18,7 @@ All repositories are stored together inside a single folder named `Repos`.
 ## How to Create a Repos/ Folder
 
 - [On Mac/Linux Machines](./repos_on_mac_linux.md)
-- [On Windows Machines](./repos_windows.md)
+- [On Windows Machines](./repos_on_windows.md)
 
 ## What Are Some of these "dot" Files?
 
