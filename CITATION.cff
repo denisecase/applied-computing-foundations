@@ -30,8 +30,6 @@ keywords:
   - command-line
   - file-systems
   - shell
-  - text-processing
-  - regular-expressions
 
   # audience
   - education
@@ -54,7 +52,7 @@ keywords:
 
 abstract: >
   Foundational, cross-cutting computing skills for working with file systems,
-  command-line environments, shells, text-processing tools, and repositories.
+  command-line environments, shells, and repositories.
   This project focuses on practical computing fluency independent of
   any specific programming language or analytics framework.
 

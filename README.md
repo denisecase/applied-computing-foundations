@@ -1,4 +1,4 @@
- # Applied Computing Foundations
+# Applied Computing Foundations
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/license/MIT)
 [![Docs (MkDocs)](https://github.com/denisecase/applied-computing-foundations/actions/workflows/deploy-mkdocs.yml/badge.svg?branch=main)](https://denisecase.github.io/applied-computing-foundations/)
@@ -7,24 +7,34 @@
 [![Dependabot](https://img.shields.io/badge/Dependabot-enabled-brightgreen.svg)](https://github.com/denisecase/applied-computing-foundations/security/dependabot)
 
 > Applied computing foundations, including how to set up a place for
-repositories, how to view file extensions, and how to work with hidden files
-and folders.
+> repositories, how to view file extensions, and how to work with hidden files
+> and folders.
 
 See the hosted documentation at <https://denisecase.github.io/applied-computing-foundations/>.
 
 ## Requirements
 
-Nothing is required to use the documentation site linked above.
+No setup is required to view or use the documentation site linked above.
+
+## To Host an MkDocs Site (Like This)
+
+While viewing your GitHub repository in the browser, click the Settings (gear) icon.
+
+1. Click the **Pages** tab.
+
+   - Set **Build and deployment** / **Source** to **GitHub Actions**
+
+2. (Optional, but required if you keep the Dependabot badge)
+   - Click the **Security & analysis** tab
+   - Enable **Dependabot alerts**
 
 ## Developer (Updating The Documentation)
 
-Pre-commit is optional; CI will report exact commands if it fails.
+Pre-commit is optional; GitHub Actions will report issues if it fails.
 
-Steps to run pre-commit locally. Install `uv`.
-In GitHub Repository Settings, click `Pages` on the left, then
-set `Build and Deploy` / `Source` to **GitHub Actions**.
-
-Initialize once:
+Steps to run pre-commit locally (optional).
+First, install `uv`.
+Then, initialize once:
 
 ```shell
 uv self update
@@ -51,8 +61,6 @@ git add -A
 git commit -m "update"
 git push -u origin main
 ```
-
-
 
 ## Annotations
 
