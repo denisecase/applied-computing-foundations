@@ -4,7 +4,7 @@
 [![Docs (MkDocs)](https://github.com/denisecase/applied-computing-foundations/actions/workflows/deploy-mkdocs.yml/badge.svg?branch=main)](https://denisecase.github.io/applied-computing-foundations/)
 ![Build Status](https://github.com/denisecase/applied-computing-foundations/actions/workflows/ci-hygiene-mkdocs.yml/badge.svg?branch=main)
 [![Check Links](https://github.com/denisecase/applied-computing-foundations/actions/workflows/links.yml/badge.svg)](https://github.com/denisecase/applied-computing-foundations/actions/workflows/links.yml)
-[![Dependabot](https://img.shields.io/badge/Dependabot-enabled-brightgreen.svg)](https://github.com/denisecase/applied-computing-foundations/security/dependabot)
+[![Dependabot](https://img.shields.io/badge/Dependabot-enabled-brightgreen.svg)](https://github.com/denisecase/applied-computing-foundations/security)
 
 > Applied computing foundations, including how to set up a place for
 > repositories, how to view file extensions, and how to work with hidden files
