@@ -73,7 +73,9 @@ repos:
       #  === PRE-COMMIT: CHECK DATA FILE FORMATS ===
 
       - id: check-json
-        name: B1) Validate JSON syntax
+        name: B1) Validate JSON syntax (except .vscode/)
+        # WHY: VSCode settings may include comments, which are non-standard JSON.
+        exclude: ^\.vscode/.*\.json$
 
       - id: check-toml
         name: B2) Validate TOML syntax
@@ -81,7 +83,10 @@ repos:
       - id: check-yaml
         name: B3) Validate YAML syntax
         files: \.(yml|yaml)$
-        exclude: ^mkdocs\.ya?ml$ # OBS: mkdocs.yaml may include non-standard tags.
+        # WHY:
+        #    VS Code config files are editor-specific
+        #    mkdocs.yml may use YAML anchors not supported by the checker
+        exclude: ^(\.vscode/|mkdocs\.ya?ml$)
 
       # === PRE-COMMIT:CHECK FOR COMMON PROBLEMS ===
 
