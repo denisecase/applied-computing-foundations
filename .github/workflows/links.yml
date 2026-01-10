@@ -44,7 +44,9 @@ jobs:
         id: lychee
         uses: lycheeverse/lychee-action@v2.7.0
         with:
-          fail: true # WHY: Fail the step if broken links found
+          # WHY: Do not hard-fail this step; always run reporting steps.
+          # Instead, fail the job explicitly at the end if exit_code != 0.
+          fail: false
           args: >
             --config lychee.toml
             --user-agent "${{ github.repository }}/lychee"
@@ -58,7 +60,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 3) Comment on PR if links broken
-        if: failure() && github.event_name == 'pull_request' && env.REPORT_FAILURES == 'true'
+        if: steps.lychee.outputs.exit_code != 0 && github.event_name == 'pull_request' && env.REPORT_FAILURES == 'true'
         uses: actions/github-script@v8
         with:
           script: |
@@ -78,8 +80,8 @@ jobs:
 
       - name: 4) Create issue for scheduled failures
         # WHY: Track broken links found during scheduled checks
-        # OBS: Only creates issue if no open issue from github-actions bot exists
-        if: failure() && github.event_name == 'schedule' && env.REPORT_FAILURES == 'true'
+        # OBS: Only creates issue if none already open with 'broken-links' label
+        if: steps.lychee.outputs.exit_code != 0 && github.event_name == 'schedule' && env.REPORT_FAILURES == 'true'
         uses: actions/github-script@v8
         with:
           script: |
@@ -91,17 +93,25 @@ jobs:
             const body = `Monthly link check found broken links.\n\nWorkflow logs: ${runUrl}`;
 
             const existing = await github.rest.issues.listForRepo({
-              owner: owner,
-              repo: repo,
+              owner,
+              repo,
+              labels: "broken-links",
               state: "open",
-              creator: "github-actions[bot]",
               per_page: 1,
             });
 
-            const alreadyOpen = existing.data.some(
-              (i) => typeof i.title === "string" && i.title.startsWith("Link Check Failed -")
-            );
-
-            if (!alreadyOpen) {
-              await github.rest.issues.create({ owner, repo, title, body });
+            if (existing.data.length === 0) {
+              await github.rest.issues.create({
+                owner,
+                repo,
+                title,
+                body,
+                labels: ["maintenance", "broken-links"],
+              });
             }
+
+      - name: 5) Fail job if broken links were found
+        if: steps.lychee.outputs.exit_code != 0
+        run: |
+          echo "Lychee found broken links (exit_code != 0). Failing workflow."
+          exit 1

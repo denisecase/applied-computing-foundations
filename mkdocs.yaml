@@ -71,5 +71,6 @@ plugins:
 nav:
   - Home: index.md
   - Glossary: glossary.md
+  - How to take Screenshots: how_to_take_screenshots.md
   - Repos/ on Mac/Linux: repos_on_mac_linux.md
   - Repos/ on Windows: repos_on_windows.md
