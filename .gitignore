@@ -12,9 +12,9 @@
 # === Universal (all projects, all languages) ===
 
 # WHY: Logs are useful during debugging and verification.
-# ALT: Uncomment temporarily if logs must be inspected or validated.
-# *.log
-# logs/
+# ALT: Comment if logs must be inspected or validated.
+*.log
+logs/
 PRIVATE_NOTES.md
 PRIVATE-NOTES.md
 
@@ -71,7 +71,7 @@ site/
 # WHY: Generic caches are machine-local and should not be tracked.
 .cache/
 
-# === Python (if used) ===
+# === Python ===
 
 # WHY: Virtual environments are machine-local and reproducible.
 .venv/
@@ -79,8 +79,8 @@ venv/
 
 # REQ.PYTHON: Do NOT git ignore uv.lock. Commit it and use it in CI/CD pipelines.
 
-# WHY: Python version when using scm
-src/datafun_toolkit/_version.py
+# WHY: Python version when using scm matches any repo depth and any package name
+**/src/**/_version.py
 
 # WHY: Python bytecode is generated.
 __pycache__/

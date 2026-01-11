@@ -3,7 +3,8 @@
 This guide provides step-by-step instructions for completing required setup tasks
 on a Windows system using File Explorer.
 
-All course repositories should be stored in a single local folder named `Repos`.
+We recommend storing all repositories in a single folder named `Repos`
+that is NOT automatically synced.
 
 ## Task 1: Create `C:\Repos` (do not use Documents/OneDrive)
 

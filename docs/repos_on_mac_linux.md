@@ -3,8 +3,8 @@
 This guide provides step-by-step instructions for completing required setup tasks
 on a computer running macOS or Linux.
 
-All course repositories should be stored in a single folder named `Repos`
-inside your local home directory.
+We recommend storing all repositories in a single folder named `Repos`
+that is NOT automatically synced.
 
 ## Task 1: Create `~/Repos` in Your Home Directory
 
@@ -73,4 +73,4 @@ You may customize Finder or your file manager for easier navigation.
 ## Tips & Troubleshooting
 
 - **Accidentally moved a file?**
-  Use Finder's or your file manager's search feature to locate it.
+  Use Finder or your file manager search feature to locate it.

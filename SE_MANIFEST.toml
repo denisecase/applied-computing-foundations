@@ -12,6 +12,7 @@ framework_url = "https://github.com/structural-explainability"
 framework_note = "Provides definitions and conventions for SE_MANIFEST semantics."
 description = "Declarative claim of repository intent, scope, and role."
 purpose = "To make explicit the boundaries, responsibilities, and expectations of this repository relative to others."
+keywords_note = "Keywords live only in CITATION.cff (canonical)."
 
 [repo]
 name = "applied-computing-foundations"
@@ -26,8 +27,15 @@ space = "Computing Foundations"
 role = "post-secondary-education"
 
 [depends]
+# WHY: This repository is documentation-only (MkDocs hosted on GitHub Pages).
+#      No tools are required to consume the content.
 required = []
-optional = ["python>=3.12", "uv", "mkdocs", "lychee"]
+# WHY: Optional tools are not required to use or run the repository.
+optional = [
+  "git",
+  "mkdocs",
+  "python>=3.14",
+]
 
 [provides]
 artifacts = [
@@ -36,20 +44,22 @@ artifacts = [
     "LICENSE",
     "README.md",
     "SE_MANIFEST.toml",
-    "docs/"
+    "docs",
 ]
 
 [scope]
 includes = [
+    "use terminal and shell for basic navigation",
     "view hidden files and directories",
-    "view file extensions",
-    "understand file system structure",
-    "create a place for repositories",
+    "view and interpret file extensions",
+    "understand hierarchical file system structure",
+    "create and organize a local repositories directory",
 ]
 excludes = [
-    "programming",
-    "analytics",
+    "programming or scripting",
+    "data analytics",
     "statistical modeling",
+    "software package development",
 ]
 
 [citation]

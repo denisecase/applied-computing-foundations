@@ -62,8 +62,8 @@ jobs:
           enable-cache: true # WHY: Speed up installs on subsequent runs
           cache-dependency-glob: "uv.lock" # WHY: Only re-cache when dependencies change
 
-      - name: A4) Install Python version 3.12
-        run: uv python install 3.12
+      - name: A4) Install Python version 3.14
+        run: uv python install 3.14
 
       - name: A5) Show tool versions
         run: |

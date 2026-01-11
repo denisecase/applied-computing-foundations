@@ -38,9 +38,11 @@ Then, initialize once:
 
 ```shell
 uv self update
-uv python pin 3.12
+uv python pin 3.14
 uv sync --extra dev --extra docs --upgrade
+
 uvx pre-commit install
+git add -A
 uvx pre-commit run --all-files
 ```
 
@@ -53,11 +55,12 @@ uv run mkdocs serve
 
 > To stop a running Python program, press `Ctrl + C` in the terminal
 
-Save progress:
+Save progress (some tools may make changes; re-running ensures everything is committed):
 
 ```shell
 git add -A
-# If pre-commit makes changes, re-run `git add -A` before committing.
+git commit -m "update"
+git add -A
 git commit -m "update"
 git push -u origin main
 ```

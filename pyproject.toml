@@ -1,18 +1,26 @@
 # ============================================================
 # pyproject.toml (Python and MkDocs project configuration)
 # ============================================================
+# VARIANT: python-mkdocs-dc
+# SOURCE: https://github.com/denisecase/templates
 
 # REQ.PYTHON: Python projects MUST include pyproject.toml as the single source of truth.
 # WHY: Centralizes project configuration.
 
 [project]
 name = "applied-computing-foundations"
-version = "0.0.0"
-description = "Documentation for computing foundations."
 readme = "README.md"
-requires-python = ">=3.12"
-license = "MIT"
+requires-python = ">=3.14"
+version = "0.1.0"
+
+# CUSTOM: Project metadata.
 authors = [{ name = "Denise Case", email = "dcase@nwmissouri.edu" }]
+description = "Documentation for computing foundations."
+keywords = ["applied computing", "foundations", "education", "analytics"]
+license-files = ["LICENSE"]
+
+# REQ.DEPS: Keep runtime dependencies minimal.
+# OBS: This toolkit uses only the Python standard library.
 dependencies = []
 
 [project.optional-dependencies]
@@ -33,7 +41,7 @@ docs = [
     "mkdocs-static-i18n>=1.3.0",
     "mkdocstrings[python]>=1.0.0",
     "pymdown-extensions>=10.20",
-    "ruff>=0.14.10",
+    "ruff>=0.14.11",
 ]
 
 [project.urls]

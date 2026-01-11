@@ -52,8 +52,8 @@ jobs:
         with:
           enable-cache: true
 
-      - name: A4) Install Python version 3.12
-        run: uv python install 3.12
+      - name: A4) Install Python version 3.14
+        run: uv python install 3.14
 
       - name: A5) Sync to install dependencies
         run: uv sync --extra dev --extra docs --upgrade
