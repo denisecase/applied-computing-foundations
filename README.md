@@ -65,6 +65,10 @@ git commit -m "update"
 git push -u origin main
 ```
 
+## Resources
+
+[GUIDE: Pro Analytics 02](https://denisecase.github.io/pro-analytics-02/) - Professional Python project starter and guide using uv, Ruff, MkDocs, and GitHub Actions
+
 ## Annotations
 
 [ANNOTATIONS.md](./ANNOTATIONS.md)
