@@ -52,7 +52,7 @@ Know **where you are** before running commands.
 
 The following commands work the same on Windows, macOS, and Linux.
 
-### `pwd` — Where am I?
+### `pwd` - Where am I?
 
 Prints the full path of the current folder.
 
