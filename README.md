@@ -46,20 +46,18 @@ git add -A
 uvx pre-commit run --all-files
 ```
 
-Build and serve docs:
+Build and serve docs (hit **CTRL+c** in the VS Code terminal to quit serving):
 
 ```shell
 uv run mkdocs build --strict
 uv run mkdocs serve
 ```
 
-> To stop a running Python program, press `Ctrl + C` in the terminal
+While editing project code and docs, repeat the commands above to run files, check them, and rebuild docs as needed.
 
-Save progress (some tools may make changes; re-running ensures everything is committed):
+Save progress frequently (some tools may make changes; you may need to **re-run git `add` and `commit`** to ensure everything gets committed before pushing):
 
 ```shell
-git add -A
-git commit -m "update"
 git add -A
 git commit -m "update"
 git push -u origin main
