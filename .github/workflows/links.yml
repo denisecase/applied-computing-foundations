@@ -42,7 +42,7 @@ jobs:
 
       - name: 2) Check links with Lychee
         id: lychee
-        uses: lycheeverse/lychee-action@v2.7.0
+        uses: lycheeverse/lychee-action@v2.8.0
         with:
           # WHY: Do not hard-fail this step; always run reporting steps.
           # Instead, fail the job explicitly at the end if exit_code != 0.
