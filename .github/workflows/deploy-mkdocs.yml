@@ -88,4 +88,4 @@ jobs:
 
       - name: D3) Deploy to GitHub Pages
         # WHY: Publish artifact to GitHub Pages.
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
