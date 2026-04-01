@@ -45,7 +45,7 @@ jobs:
 
       - name: A2) Configure GitHub Pages
         # WHY: Sets Pages metadata for deployments.
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
 
       - name: A3) Install uv (with caching)
         uses: astral-sh/setup-uv@v7
