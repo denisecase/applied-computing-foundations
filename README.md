@@ -1,8 +1,8 @@
 # Applied Computing Foundations
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/license/MIT)
-[![Docs (MkDocs)](https://github.com/denisecase/applied-computing-foundations/actions/workflows/deploy-mkdocs.yml/badge.svg?branch=main)](https://denisecase.github.io/applied-computing-foundations/)
-![Build Status](https://github.com/denisecase/applied-computing-foundations/actions/workflows/ci-hygiene-mkdocs.yml/badge.svg?branch=main)
+[![Docs](https://github.com/denisecase/applied-computing-foundations/actions/workflows/deploy-zensical.yml/badge.svg?branch=main)](https://denisecase.github.io/applied-computing-foundations/)
+![Build Status](https://github.com/denisecase/applied-computing-foundations/actions/workflows/ci-hygiene-zensical.yml/badge.svg?branch=main)
 [![Check Links](https://github.com/denisecase/applied-computing-foundations/actions/workflows/links.yml/badge.svg?branch=main)](https://github.com/denisecase/applied-computing-foundations/actions/workflows/links.yml)
 [![Dependabot](https://img.shields.io/badge/Dependabot-enabled-brightgreen.svg)](https://github.com/denisecase/applied-computing-foundations/security)
 
@@ -16,7 +16,7 @@ See the hosted documentation at <https://denisecase.github.io/applied-computing-
 
 No setup is required to view or use the documentation site linked above.
 
-## To Host an MkDocs Site (Like This)
+## To Host an Zensical Site (Like This)
 
 While viewing your GitHub repository in the browser, click the Settings (gear) icon.
 
@@ -42,15 +42,16 @@ uv python pin 3.14
 uv sync --extra dev --extra docs --upgrade
 
 uvx pre-commit install
+
+git add -A
+uvx pre-commit run --all-files
+# repeat if changes were made
 git add -A
 uvx pre-commit run --all-files
 ```
 
-Build and serve docs (hit **CTRL+c** in the VS Code terminal to quit serving):
-
 ```shell
-uv run mkdocs build --strict
-uv run mkdocs serve
+uv run zensical build
 ```
 
 While editing project code and docs, repeat the commands above to run files, check them, and rebuild docs as needed.
@@ -59,13 +60,13 @@ Save progress frequently (some tools may make changes; you may need to **re-run 
 
 ```shell
 git add -A
-git commit -m "update"
+git commit -m "your message here"
 git push -u origin main
 ```
 
 ## Resources
 
-[GUIDE: Pro Analytics 02](https://denisecase.github.io/pro-analytics-02/) - Professional Python project starter and guide using uv, Ruff, MkDocs, and GitHub Actions
+[GUIDE: Pro Analytics 02](https://denisecase.github.io/pro-analytics-02/) - Professional Python project starter and guide using uv, Ruff, zensical, and GitHub Actions
 
 ## Annotations
 

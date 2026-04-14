@@ -1,8 +1,9 @@
 # ============================================================
-# .yamllint.yml (Keep YAML files clean and consistent)
+# .github/.yamllint.yml (Keep YAML files clean and consistent)
 # ============================================================
+# Updated: 2026-04-13
 
-# WHY: Enforce YAML correctness (.yamllint.yml) without arbitrary style constraints.
+# WHY: Enforce YAML correctness (.github/.yamllint.yml) without arbitrary style constraints.
 # OBS: Default yamllint rules conflict with GitHub Actions YAML.
 #      Line length, document start, truthy, and comment spacing are intentionally disabled.
 

@@ -1,6 +1,7 @@
 # ============================================================
-# lychee.toml (Lychee link checker configuration)
+# .github/lychee.toml (Lychee link checker configuration)
 # ============================================================
+# Updated: 2026-04-13
 
 # REQ.PROJECT: Automatic link checking using GitHub Actions and Lychee.
 # WHY-FILE: Shared Lychee configuration (lychee.toml) for documentation-heavy repositories.
@@ -32,11 +33,14 @@ accept = [
   308, # Permanent redirect
   403, # Forbidden (often false positive)
   429, # Too many requests (rate limiting)
-  503, # Service unavailable (temporary)
 ]
 
 # WHY: Exclude patterns that shouldn't be checked
 exclude = [
+  "^https://shields\\.io", # WHY: Shields.io badges often have anti-bot measures that cause false positives
+  "^https://img\\.shields\\.io", # WHY: Shields.io image badges often have anti-bot measures that cause false positives
+  "^https://badges\\.github\\.com", # WHY: GitHub badges often have anti-bot measures that cause false positives
+  "^https://www\\.linkedin\\.com", # WHY: LinkedIn often blocks automated requests, causing false positives
   "example\\.com",   # WHY: Exclude example domains in documentation
   "localhost",       # WHY: Exclude local development URLs
   "127\\.0\\.0\\.1", # WHY: Exclude local loopback

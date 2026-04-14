@@ -1,0 +1,104 @@
+# ============================================================
+# .github/workflows/ci-hygiene-zensical.yml (Continuous Integration)
+# ============================================================
+# Updated: 2026-04-13
+#
+# WHY-FILE: Validate repository hygiene and documentation builds.
+# REQ: CI MUST NOT introduce arbitrary rules that are not reproducible locally.
+# OBS: CI validates only; it does not edit files or deploy docs.
+# OBS: yamllint config lives at .github/yamllint.yml (not repo root).
+
+name: CI (Hygiene + Zensical)
+
+on:
+  push:
+    branches: [main]       # WHY: Validate every push to main.
+  pull_request:
+    branches: [main]       # WHY: Validate PRs before merge.
+  workflow_dispatch:        # WHY: Allow manual trigger from Actions tab.
+
+permissions:
+  contents: read            # WHY: Least privilege; CI only reads, never writes.
+
+env:
+  PYTHONUNBUFFERED: "1"    # WHY: Real-time log output in CI.
+  PYTHONIOENCODING: "utf-8" # WHY: Consistent encoding across platforms.
+
+jobs:
+  ci:
+    name: Repository / Hygiene + Zensical build
+    runs-on: ubuntu-latest  # WHY: Linux matches most production deployments.
+    timeout-minutes: 30     # WHY: Fail fast if a step hangs unexpectedly.
+    env:
+      UV_PYTHON: "3.14"     # WHY: Pin Python version for all steps in this job.
+
+    steps:
+      # ============================================================
+      # A) ASSEMBLE: Checkout code and set up environment
+      # ============================================================
+
+      - name: A1) Checkout repository code
+        uses: actions/checkout@v6
+        # WHY: Required so all subsequent steps can access repo files.
+
+      - name: A2) Install uv (with caching)
+        uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+          # WHY: Cache the uv tool itself for faster subsequent runs.
+          cache-dependency-glob: "uv.lock"
+          # WHY: Invalidate cache only when locked dependencies change.
+
+      - name: A3) Install Python 3.14
+        run: uv python install 3.14
+        # WHY: Ensures the pinned Python version is available in CI.
+        # OBS: Does not modify the repo; uv manages the interpreter locally.
+
+      - name: A4) Install all dependencies
+        run: uv sync --extra dev --extra docs --upgrade
+        # WHY: Install dev and docs extras so all check and build tools are available.
+        # OBS: --upgrade ensures CI catches dependency drift early.
+
+      - name: A5) Show tool versions
+        run: |
+          uv --version
+          uv run python --version
+          uv run ruff --version
+          uv run python -m pyright --version
+          if [ -f "zensical.toml" ]; then
+            uv run zensical --version
+          fi
+        # WHY: Version output makes CI logs easier to debug when tools change.
+
+      - name: A6) Run pre-commit on all files
+        run: uv tool run pre-commit run --all-files
+        # WHY: Enforces formatting, linting, and file hygiene in one step.
+        # OBS: Covers ruff-check, ruff-format, whitespace, line endings,
+        #      and JSON/TOML/YAML syntax checks defined in .pre-commit-config.yaml.
+        # OBS: Pre-commit hook order (lint then format) differs from manual
+        #      command order (format then lint). See .pre-commit-config.yaml.
+
+      # ============================================================
+      # B) BASELINE CHECKS: Tools not covered by pre-commit
+      # ============================================================
+
+      - name: B1) Validate pyproject.toml schema
+        run: uv run validate-pyproject pyproject.toml
+        # WHY: Catches malformed pyproject.toml before a broken release.
+        # OBS: validate-pyproject must be listed in [project.optional-dependencies].dev.
+
+      # ============================================================
+      # D) Docs build (no deployment)
+      # ============================================================
+
+      - name: D1) Build documentation with Zensical
+        run: |
+          if [ -f "zensical.toml" ]; then
+            uv run zensical build
+          else
+            echo "No zensical.toml found; skipping docs build."
+          fi
+        # WHY: Confirms docs build cleanly without errors or broken references.
+        # OBS: Build only; deployment is handled by a separate workflow if needed.
+        # OBS: Conditional on zensical.toml so this workflow is reusable across
+        #      repos that may not yet have docs configured.

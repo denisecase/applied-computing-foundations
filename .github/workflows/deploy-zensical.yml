@@ -1,0 +1,123 @@
+# ============================================================
+# .github/workflows/deploy-zensical.yml (Deploy Docs)
+# ============================================================
+# Updated: 2026-04-13
+#
+# WHY-FILE: Build and deploy documentation to GitHub Pages on pushes to main.
+#
+# REQ: Repo Settings -> Pages -> Build and deployment -> Source:
+#      GitHub Actions
+# WHY: Without this setting, the deploy-pages action will fail with a 403.
+#
+# OBS: This workflow deploys only. Correctness of the build is validated
+#      by ci-python-zensical.yml before merging to main.
+# OBS: Deployment runs after CI passes on push to main, not on PRs.
+# WHY: PRs use CI to validate; deployment only happens on confirmed main commits.
+
+name: Docs Deploy (Zensical)
+
+on:
+  push:
+    branches: [main]    # WHY: Deploy on every confirmed push to main.
+  workflow_dispatch:     # WHY: Allow manual redeploy from Actions tab if needed.
+
+permissions:
+  contents: read        # WHY: Needed to checkout code.
+  pages: write          # WHY: Required to deploy to GitHub Pages.
+  id-token: write       # WHY: Required by deploy-pages for OIDC authentication.
+
+env:
+  PYTHONUNBUFFERED: "1"     # WHY: Real-time log output in CI.
+  PYTHONIOENCODING: "utf-8" # WHY: Consistent encoding across platforms.
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+  # WHY: Only one Pages deployment runs at a time per branch.
+  # OBS: A second push to main while deploying cancels the in-progress run.
+  #      This prevents partial or stale deployments from racing.
+
+jobs:
+  docs:
+    name: Deploy Documentation site
+    runs-on: ubuntu-latest
+    timeout-minutes: 30   # WHY: Fail fast if a step hangs unexpectedly.
+    env:
+      UV_PYTHON: "3.14"   # WHY: Pin Python version for all steps in this job.
+
+    steps:
+      # ============================================================
+      # A) ASSEMBLE: Checkout code and set up environment
+      # ============================================================
+
+      - name: A1) Checkout repository code
+        uses: actions/checkout@v6
+        # WHY: Required so all subsequent steps can access repo files.
+
+      - name: A2) Configure GitHub Pages
+        uses: actions/configure-pages@v6
+        # WHY: Sets Pages metadata used by upload-pages-artifact and deploy-pages.
+        # OBS: Must run before the build step so base URL is available if needed.
+
+      - name: A3) Install uv (with caching)
+        uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+          # WHY: Invalidate cache only when locked dependencies change.
+
+      - name: A4) Install Python 3.14
+        run: uv python install 3.14
+
+      - name: A5) Install all dependencies
+        run: uv sync --extra dev --extra docs --upgrade
+        # WHY: Docs extras required for Zensical build; dev extras for consistency.
+
+      - name: A6) Show tool versions
+        run: |
+          uv --version
+          uv run python --version
+          if [ -f "zensical.toml" ]; then
+            uv run zensical --version
+          fi
+        # WHY: Version output makes deployment logs easier to debug when tools change.
+
+      # ============================================================
+      # D) DEPLOY: Build and publish docs
+      # ============================================================
+
+      - name: D1) Build docs with Zensical
+        run: |
+          if [ ! -f "zensical.toml" ]; then
+            echo "zensical.toml not found; refusing to deploy." >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
+          uv run zensical build
+        # WHY: Hard-fail if zensical.toml is missing rather than deploying nothing.
+        # OBS: In CI (ci-python-zensical.yml) the missing config is a soft skip.
+        #      Here it is a hard failure because a deploy without docs is wrong.
+
+      - name: D2) Verify site output exists
+        run: |
+          if [ ! -d "site" ]; then
+            echo "## Documentation build output missing" >> "$GITHUB_STEP_SUMMARY"
+            echo "Expected directory 'site/' was not created." >> "$GITHUB_STEP_SUMMARY"
+            echo "Check the Zensical build step and zensical.toml configuration." >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
+        # WHY: Catch a silent build failure before attempting to upload an empty artifact.
+        # OBS: Zensical outputs to site/ by default; update this path if zensical.toml
+        #      configures a different output directory.
+
+      - name: D3) Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+        # WHY: Packages the built static site for the deploy-pages action.
+        # OBS: path must match the output directory verified in D2.
+
+      - name: D4) Deploy to GitHub Pages
+        uses: actions/deploy-pages@v5
+        # WHY: Publishes the uploaded artifact to GitHub Pages.
+        # OBS: Requires pages: write and id-token: write permissions (set above).
+        # OBS: The deployed URL is shown in the Actions log after this step completes.
