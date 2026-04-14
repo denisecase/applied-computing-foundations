@@ -1,7 +1,7 @@
 # ============================================================
 # .pre-commit-config.yaml (Python Hygiene)
 # ============================================================
-# Updated: 2026-04-13
+# Updated: 2026-04-13 - no ruff hooks, only pre-commit-hooks for file hygiene and syntax checks.
 
 # REQ: Professional Python projects SHOULD include a .pre-commit-config.yaml
 # to minimize git diffs and support collaboration.
@@ -25,22 +25,6 @@
 # pre-commit hooks, after `git add` and before `git commit`.
 #
 # NOTE: enabling pre-commit is optional. It is not needed to clone or commit.
-#
-# === RUFF HOOK ORDER (pre-commit vs. manual) ===
-#
-# PRE-COMMIT ORDER: lint first, then format.
-# WHY: Hooks run sequentially in a single automated pass.
-#      ruff-check --fix may change code structure (e.g., remove unused imports,
-#      rewrite expressions). ruff-format then cleans up the result.
-#      If format ran first, lint fixes could undo the formatting.
-#
-# MANUAL ORDER (command line) is different: format first, then check.
-#   uv run ruff format .
-#   uv run ruff check . --fix
-# WHY: When running manually, each command is a conscious step.
-#      Format cleans style first so lint sees tidy code.
-#      You are in control and can re-run either command as needed.
-#      The single-pass sequencing constraint does not apply.
 
 exclude: |
   (?x)^(
@@ -117,23 +101,6 @@ repos:
 
       - id: check-case-conflict
         name: C3) Check for filename case conflicts
-
-  # === REPO: RUFF PRE-COMMIT (for Python code) ===
-
-  # WHY: Lint runs before format in pre-commit (opposite of manual order).
-  #      See RUFF HOOK ORDER note at the top of this file.
-
-  - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.15.10
-    hooks:
-      - id: ruff-check
-        name: D1) Ruff linter with autofix (runs first in pre-commit)
-        # WHY: Lint fixes run first so formatter sees the corrected code.
-        args: [--fix, --exit-non-zero-on-fix]
-
-      - id: ruff-format
-        name: D2) Ruff formatter (runs after linter fixes)
-        # WHY: Formats whatever structure the linter left behind.
 
 # === GLOBAL SETTINGS ===
 # ALT: Set fail_fast to true to stop at first failure.

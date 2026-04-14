@@ -63,8 +63,6 @@ jobs:
         run: |
           uv --version
           uv run python --version
-          uv run ruff --version
-          uv run python -m pyright --version
           if [ -f "zensical.toml" ]; then
             uv run zensical --version
           fi
