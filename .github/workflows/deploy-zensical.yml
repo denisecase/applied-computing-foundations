@@ -110,7 +110,7 @@ jobs:
         #      configures a different output directory.
 
       - name: D3) Upload Pages artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v5
         with:
           path: site
         # WHY: Packages the built static site for the deploy-pages action.
