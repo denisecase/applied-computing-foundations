@@ -37,7 +37,7 @@ jobs:
 
     steps:
       - name: 1) Checkout repository code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         # WHY: Required so Lychee can inspect repository files.
 
       - name: 2) Run Lychee

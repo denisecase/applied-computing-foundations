@@ -51,7 +51,7 @@ jobs:
       # ============================================================
 
       - name: A1) Checkout repository code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         # WHY: Required so all subsequent steps can access repo files.
 
       - name: A2) Configure GitHub Pages
