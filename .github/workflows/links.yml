@@ -41,7 +41,7 @@ jobs:
         # WHY: Required so Lychee can inspect repository files.
 
       - name: 2) Run Lychee
-        uses: lycheeverse/lychee-action@v2.8.0
+        uses: lycheeverse/lychee-action@v2.9.0
         with:
           args: >
             --config .github/lychee.toml
