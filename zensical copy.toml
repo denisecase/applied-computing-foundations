@@ -1,0 +1,59 @@
+# ============================================================
+# zensical.toml (ALL-PY-REPOS)
+# ============================================================
+# Updated: 2026-06-27
+#
+# REQ: Python tooling only (no src) repositories SHOULD provide documentation configuration.
+# BUT Do not need mkdocs plugs used for src/ api generation.
+# pyproject.toml needs only zensical.
+# WHY: Centralizes project documentation configuration.
+
+[project]
+site_name = "Docs" # CUSTOM: Set the name that appears in the browser tab.
+site_url = "https://denisecase.github.io/applied-computing-foundations/"
+repo_url = "https://github.com/denisecase/applied-computing-foundations"
+repo_name = "applied-computing-foundations"
+site_description = "Project Documentation" # CUSTOM: Set the description.
+docs_dir = "docs" # source directory for documentation markdown files
+site_dir = "site" # output directory for generated site (ignored by Git; not in repo)
+edit_uri = "edit/main/docs/" # "Edit this page" links (GitHub)
+
+[project.extra]
+# WHY: Social links provide easy access to project repositories and profiles.
+social = [
+    {icon = "fontawesome/brands/github", link = "https://github.com/denisecase/applied-computing-foundations" },
+]
+
+# ------------------------------------------------------------
+# Plugins
+# ------------------------------------------------------------
+
+[project.plugins.search]
+lang = "en" # WHY: Search plugin provides instant search functionality for documentation.
+
+[project.theme]
+# SEE: https://zensical.org/docs/setup/navigation/#instant-navigation-zensicaltoml
+features = [
+    "navigation.tracking", # WHY: Track documentation navigation behavior.
+    "navigation.expand", # WHY: Expandable navigation helps users focus on relevant sections.
+    "navigation.path", # WHY: Path navigation helps users understand location.
+    "navigation.prune", # WHY: Pruning simplifies navigation.
+    "navigation.indexes", # WHY: Indexes provide an overview of documentation structure.
+    "toc.follow", # WHY: Keep table of contents in sync with the current page.
+    "toc.integrate", # WHY: Integrate table of contents into navigation.
+    "navigation.top", # WHY: Add a back-to-top button.
+]
+
+# ------------------------------------------------------------
+# Navigation
+# ------------------------------------------------------------
+# Folder-based navigation is an optional alternative.
+
+nav = [
+    { "Home" = "index.md" },
+    { "Glossary" = "glossary.md" },
+    { "How to take Screenshots" = "how_to_take_screenshots.md" },
+    { "Repos/ on Mac/Linux" = "repos_on_mac_linux.md" },
+    { "Repos/ on Windows" = "repos_on_windows.md" },
+    { "Terminals" = "terminals.md" },
+]

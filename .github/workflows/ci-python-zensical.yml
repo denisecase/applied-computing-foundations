@@ -1,16 +1,18 @@
 # ============================================================
 # .github/workflows/ci-python-zensical.yml (ALL-PY-REPOS)
 # ============================================================
-# Updated: 2026-08-08
+# Updated: 2026-08-11
 
 # WHY: Continuous Integration (CI) ensures repository hygiene,
 #      Python correctness, and documentation builds.
+# REQ: Repository MUST contain .python-version.
+# WHY: The repository declares the Python version used locally and by CI.
 # REQ: CI MUST NOT introduce rules that are not reproducible locally.
 # OBS: CI validates only; it does not edit files or deploy docs.
 # OBS: yamllint config lives at .github/.yamllint.yml (not repo root).
 # TOOLING ONLY PYTHON REPOS need zensical, but not ruff, pyright, or pytest.
-# In pyproject.toml, they need zensical (if you want docs/)
-# but can use a simpler zensical.toml without API docs (mkdocs dep needed only for PY-SRC).
+# In pyproject.toml, they need zensical (for docs/)
+# and can use a simpler zensical.toml without API docs.
 
 # Name shown in the repo Actions tab.
 name: CI (Python + Zensical)
@@ -40,8 +42,6 @@ jobs:
     name: Repo checks and Zensical build
     runs-on: ubuntu-latest  # WHY: Linux matches most production deployments.
     timeout-minutes: 30     # WHY: Fail fast if a step hangs unexpectedly.
-    env:
-      UV_PYTHON: "3.15"     # WHY: Pin Python version for all steps in this job.
 
     steps:
       # ============================================================
@@ -60,16 +60,11 @@ jobs:
           cache-dependency-glob: "uv.lock"
           # WHY: Invalidate cache only when locked dependencies change.
 
-      - name: A3) Install Python ${{ env.UV_PYTHON }} in uv
-        run: uv python install ${{ env.UV_PYTHON }}
-        # WHY: Ensures the pinned Python version is available in CI.
-        # OBS: Does not modify the repo; uv manages the interpreter locally.
-
-      - name: A4) Install all dependencies with frozen versions (in uv.lock)
+      - name: A3) Install all dependencies with frozen versions (in uv.lock)
         run: uv sync  --frozen
         # WHY: Install dev and docs extras so all check and build tools are available.
 
-      - name: A5) Show tool versions
+      - name: A4) Show tool versions
         run: |
           uv --version
           uv run python --version
@@ -78,7 +73,7 @@ jobs:
           fi
         # WHY: Version output makes CI logs easier to debug when tools change.
 
-      - name: A6) Run pre-commit on all files
+      - name: A5) Run pre-commit on all files
         run: uv run pre-commit run --all-files
         # WHY: Run the same repo hygiene checks used locally.
         # OBS: A clean commit should already pass this without file changes.

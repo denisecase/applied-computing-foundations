@@ -1,12 +1,14 @@
 # ============================================================
 # .github/workflows/deploy-zensical.yml (ALL-PY-REPOS)
 # ============================================================
-# Updated: 2026-06-27
+# Updated: 2026-08-11
 
 # WHY: Build and deploy documentation to GitHub Pages on pushes to main.
 # REQ: Repo Settings -> Pages -> Build and deployment -> Source:
 #      GitHub Actions
 # WHY: Without this setting, the deploy-pages action will fail with a 403.
+# REQ: Repository MUST contain .python-version.
+# WHY: The repository declares the Python version used locally and by CI.
 
 # Name shown in the repo Actions tab.
 name: Docs Deploy (Zensical)
@@ -36,8 +38,6 @@ jobs:
     name: Deploy Documentation site
     runs-on: ubuntu-latest
     timeout-minutes: 30   # WHY: Fail fast if a step hangs unexpectedly.
-    env:
-      UV_PYTHON: "3.15"   # WHY: Pin Python version for all steps in this job.
 
     steps:
       # ============================================================
@@ -54,21 +54,18 @@ jobs:
         # OBS: Must run before the build step so base URL is available if needed.
 
       - name: A3) Install uv (with caching)
-        uses: astral-sh/setup-uv@v7
+        uses: astral-sh/setup-uv@v8.2.0
         with:
           enable-cache: true
           cache-dependency-glob: "uv.lock"
           # WHY: Invalidate cache only when locked dependencies change.
 
-      - name: A4) Install Python ${UV_PYTHON} with uv
-        run: uv python install ${UV_PYTHON}
-
-      - name: A5) Install all dependencies with frozen versions (in uv.lock)
+      - name: A4) Install all dependencies with frozen versions (in uv.lock)
         run: uv sync  --frozen
         # WHY: Docs extras required for Zensical build; dev extras for consistency.
         # OBS: Deployment validates the committed lock file; it must not upgrade dependencies.
 
-      - name: A6) Show tool versions
+      - name: A5) Show tool versions
         run: |
           uv --version
           uv run python --version
