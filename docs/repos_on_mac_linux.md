@@ -8,6 +8,10 @@ on a computer running macOS or Linux.
 We recommend storing all repositories in a single folder named `Repos`
 that is NOT automatically synced.
 
+[Pro Analytics 02: Guide to Professional Python](https://denisecase.github.io/pro-analytics-02/)
+walks through this as part of machine setup.
+You only need to create the `Repos` folder once - either here or there.
+
 ## Task 1: Create `~/Repos` in Your Home Directory
 
 Your home directory is:
@@ -23,7 +27,7 @@ Documents on macOS).
 
 1. Open **Finder** (macOS) or your file manager (Linux).
 2. Navigate to your home directory:
-   - macOS: `Go` → `Home` (or press **Command + Shift + H**)
+   - macOS: `Go` / `Home` (or press **Command + Shift + H**)
    - Linux: Open your **Home** folder
 3. Right-click (or Control-click) and select **New Folder**.
 4. Name the folder **Repos** (capitalize the `R`).

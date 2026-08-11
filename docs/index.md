@@ -1,71 +1,41 @@
 # Applied Computing Foundations
 
-Explore the tabs and sidebars for content.
+> Explore the tabs and sidebars for content.
 
-## What does `Repos` mean?
+## Purpose
 
-**Repos** is short for **repositories**.
+This site covers a small set of computing basics before the
+[Guide to Professional Python](https://denisecase.github.io/pro-analytics-02/),
+including:
 
-A repository (often called a _repo_) is a folder that contains:
+- how to move around a terminal
+- sharing projects with Git and GitHub
+- how to organize Python project folders on the computer
 
-- project files
-- a record of changes over time
-- metadata used by tools like Git and GitHub
+## Target
 
-Typically, every project lives in its own repository folder.
-All repositories are stored together inside a single folder named `Repos`.
+This overview is for capable professionals new to terminals, file paths, and repositories.
+These pages provide foundational vocabulary so the professional Python guide makes sense.
 
-## How to Create a Repos/ Folder
+## Contents
 
-- [On Mac/Linux Machines](./repos_on_mac_linux.md)
-- [On Windows Machines](./repos_on_windows.md)
+1. [Know These Terms](glossary.md): vocabulary.
+2. [Working with Terminals](terminals.md): open a terminal, know your current
+   folder, and move around with `pwd`, `ls`, and `cd`.
+3. [Git and GitHub](git_and_github.md): what a repository is, and how the local
+   and remote copies relate (clone, commit, push, pull).
+4. Set Up Your Repos Folder: one folder that holds all your project
+   repositories: [Mac/Linux](repos_on_mac_linux.md) or [Windows](repos_on_windows.md).
+5. [How to Take Screenshots](how_to_take_screenshots.md): a quick reference used
+   in later coursework.
 
-## What Are Some of these "dot" Files?
+## Skills
 
-> You must be able to view **file extensions** and **hidden files and folders**.
-> See the links above for more.
+- **Open a terminal** - both a machine terminal and the one inside the VS Code editor.
+- Say which **folder** your terminal is currently in, and `cd` into another.
+- Explain in one sentence what git **clone**, **commit**, and **push** do.
+- Create a `Repos` folder and see hidden files (like `.git`) and folders inside a project.
 
-Files that start with a dot (.) are usually configuration files.
-They don't contain project content;
-they describe how the project should behave.
+## Next Step
 
-These three files belong in nearly every professional repository:
-
-### 1. `.editorconfig` - keeps files consistent regardless of editor
-
-This file helps different editors agree on things like:
-
-- line endings
-- indentation
-- trailing spaces
-
-It prevents formatting noise when people use different tools.
-
-### 2. `.gitattributes` - keeps files consistent across operating systems
-
-This file helps Git handle files correctly on:
-
-- Windows
-- macOS
-- Linux
-
-It prevents problems caused by different line endings and file-handling rules.
-
-### 3. `.gitignore` - keeps unnecessary or unsafe files out of the repository
-
-This file tells Git which files **not** to track, such as:
-
-- temporary files
-- system files
-- local settings
-- secrets or credentials
-
-It helps keep repositories clean, safe, and shareable.
-
----
-
-## To Customize These Documents, Modify
-
-- `docs/` (folder with Markdown files)
-- `zensical.toml` (in the root project folder)
-  - scroll to the end for the `nav` section
+- [**Pro Analytics 02: Guide to Professional Python](https://denisecase.github.io/pro-analytics-02/).

@@ -8,6 +8,10 @@ on a Windows system using File Explorer.
 We recommend storing all repositories in a single folder named `Repos`
 that is NOT automatically synced.
 
+[Pro Analytics 02: Guide to Professional Python](https://denisecase.github.io/pro-analytics-02/)
+walks through this as part of machine setup.
+You only need to create the `Repos` folder once - either here or there.
+
 ## Task 1: Create `C:\Repos` (do not use Documents/OneDrive)
 
 Windows often syncs the `Documents` folder with OneDrive, which can cause confusion

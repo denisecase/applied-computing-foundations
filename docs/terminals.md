@@ -71,6 +71,27 @@ Use this to check for files like `README.md` or project folders.
 
 ---
 
+## Paths
+
+A **path** is the address of a file or folder.
+There are two kinds of paths:
+
+- **Absolute** - the full address from the top.
+  Windows: `C:\Repos\my-project`.
+  Mac/Linux: `/Users/you/Repos/my-project`.
+- **Relative** - an address starting from the current folder. `my-project`
+  means "my-project inside where I already am."
+
+Useful shorthands:
+
+- `~` means your home folder (Mac/Linux).
+- `.` means the current folder; `..` means the folder one level up.
+- Windows separates folders with `\`; Mac/Linux use `/`. Most tools accept `/`
+  on all three, which is why you will see it most often.
+
+So `cd ~/Repos` means "go to the Repos folder in my home directory," and
+`cd ..` means "go up one level."
+
 ### `cd` - Change directory
 
 Moves into another folder.

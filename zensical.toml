@@ -52,8 +52,9 @@ features = [
 nav = [
     { "Home" = "index.md" },
     { "Glossary" = "glossary.md" },
+    { "Working with Terminals" = "terminals.md" },
+    { "Git and GitHub" = "git_and_github.md" },
+    { "Repos Folder (Mac/Linux)" = "repos_on_mac_linux.md" },
+    { "Repos Folder (Windows)" = "repos_on_windows.md" },
     { "How to take Screenshots" = "how_to_take_screenshots.md" },
-    { "Repos/ on Mac/Linux" = "repos_on_mac_linux.md" },
-    { "Repos/ on Windows" = "repos_on_windows.md" },
-    { "Terminals" = "terminals.md" },
 ]

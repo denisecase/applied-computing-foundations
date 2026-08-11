@@ -34,14 +34,19 @@ See the hosted documentation at <https://denisecase.github.io/applied-computing-
 
 No setup is required to view or use the documentation site linked above.
 
-## Requirements to Modify the Documentation
+## Documentation Files
+
+- `docs/` (folder with Markdown files)
+- `zensical.toml` (in the root project folder): scroll to end for the `nav` section
+
+## Requirements to Develop this Documentation Locally
 
 - Git
 - VS Code
 - uv
 - Node.js (optional, for additional Markdown tooling)
 
-## Helpful Commands
+## Helpful Developer Commands
 
 ```shell
 # reset uv cache only after suspected cache corruption or strange dependency errors
@@ -78,8 +83,7 @@ git push -u origin main
 
 ## Resources
 
-[GUIDE: Pro Analytics 02](https://denisecase.github.io/pro-analytics-02/) - Professional
-Python Guide
+[Pro Analytics 02: Guide to Professional Python](https://denisecase.github.io/pro-analytics-02/)
 
 ## Citation
 
