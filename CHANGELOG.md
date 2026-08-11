@@ -49,8 +49,6 @@ uv lock --upgrade
 uv sync
 uv run pre-commit install
 
-uv run pup-clean
-
 git add -A
 uv run pre-commit run --all-files
 # rerun if changes made

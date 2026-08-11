@@ -1,10 +1,10 @@
 # Applied Computing Foundations
 
-[![Docs](https://github.com/denisecase/applied-computing-foundations/actions/workflows/deploy-zensical.yml/badge.svg?branch=main)](https://denisecase.github.io/applied-computing-foundations/)
+[![Docs](https://img.shields.io/badge/Docs-site-blue.svg)](https://denisecase.github.io/applied-computing-foundations/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/license/MIT)
 ![Python 3.15](https://img.shields.io/badge/Python-3.15-blue.svg)
 ![uv](https://img.shields.io/badge/uv-managed-DE5FE9)
-![CI Status](https://github.com/denisecase/applied-computing-foundations/actions/workflows/ci-hygiene-zensical.yml/badge.svg?branch=main)
+![CI Status](https://github.com/denisecase/applied-computing-foundations/actions/workflows/ci-python-zensical.yml/badge.svg?branch=main)
 [![Check Links](https://github.com/denisecase/applied-computing-foundations/actions/workflows/links.yml/badge.svg?branch=main)](https://github.com/denisecase/applied-computing-foundations/actions/workflows/links.yml)
 [![Dependabot](https://img.shields.io/badge/Dependabot-enabled-brightgreen.svg)](https://github.com/denisecase/applied-computing-foundations/security)
 
