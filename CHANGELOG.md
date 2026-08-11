@@ -52,7 +52,7 @@ uv run pre-commit install
 git add -A
 uv run pre-commit run --all-files
 # rerun if changes made
-uvx pre-commit run --all-files
+uv run pre-commit run --all-files
 
 npx markdownlint-cli2 --fix
 uvx cffconvert --validate
