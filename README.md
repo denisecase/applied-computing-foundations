@@ -2,6 +2,8 @@
 
 [![Docs](https://github.com/denisecase/applied-computing-foundations/actions/workflows/deploy-zensical.yml/badge.svg?branch=main)](https://denisecase.github.io/applied-computing-foundations/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/license/MIT)
+![Python 3.15](https://img.shields.io/badge/Python-3.15-blue.svg)
+![uv](https://img.shields.io/badge/uv-managed-DE5FE9)
 ![CI Status](https://github.com/denisecase/applied-computing-foundations/actions/workflows/ci-hygiene-zensical.yml/badge.svg?branch=main)
 [![Check Links](https://github.com/denisecase/applied-computing-foundations/actions/workflows/links.yml/badge.svg?branch=main)](https://github.com/denisecase/applied-computing-foundations/actions/workflows/links.yml)
 [![Dependabot](https://img.shields.io/badge/Dependabot-enabled-brightgreen.svg)](https://github.com/denisecase/applied-computing-foundations/security)
@@ -37,26 +39,35 @@ First, install `uv`.
 Then, initialize once:
 
 ```shell
+# reset uv cache only after suspected cache corruption or strange dependency errors
+# uv cache clean
+
 uv self update
-uv python pin 3.14
-uv sync --extra dev --extra docs --upgrade
+uv python pin 3.15
+uv lock --upgrade
+uv sync
 
 uvx pre-commit install
+uv run pre-commit autoupdate
 
 git add -A
 uvx pre-commit run --all-files
 # repeat if changes were made
 git add -A
 uvx pre-commit run --all-files
+
+npx markdownlint-cli2 --fix
+
+uv run python -m zensical build
 ```
 
-```shell
-uv run zensical build
-```
+While editing project code and docs,
+repeat the commands above to run files, check them, and
+rebuild docs as needed.
 
-While editing project code and docs, repeat the commands above to run files, check them, and rebuild docs as needed.
-
-Save progress frequently (some tools may make changes; you may need to **re-run git `add` and `commit`** to ensure everything gets committed before pushing):
+Save progress frequently (some tools may make changes;
+you may need to **re-run git `add` and `commit`**
+to ensure everything gets committed before pushing):
 
 ```shell
 git add -A
@@ -66,11 +77,8 @@ git push -u origin main
 
 ## Resources
 
-[GUIDE: Pro Analytics 02](https://denisecase.github.io/pro-analytics-02/) - Professional Python project starter and guide using uv, Ruff, zensical, and GitHub Actions
-
-## Annotations
-
-[ANNOTATIONS.md](./ANNOTATIONS.md)
+[GUIDE: Pro Analytics 02](https://denisecase.github.io/pro-analytics-02/) - Professional
+Python Guide
 
 ## Citation
 
@@ -79,7 +87,3 @@ git push -u origin main
 ## License
 
 [MIT](./LICENSE)
-
-## SE Manifest
-
-[SE_MANIFEST.md](./SE_MANIFEST.toml)

@@ -1,10 +1,10 @@
 # ============================================================
-# .github/lychee.toml (Lychee link checker configuration)
+# .github/lychee.toml (ALL-REPOS)
 # ============================================================
-# Updated: 2026-04-13
+# Updated: 2026-06-27
 
-# REQ.PROJECT: Automatic link checking using GitHub Actions and Lychee.
-# WHY-FILE: Shared Lychee configuration (lychee.toml) for documentation-heavy repositories.
+# REQ: Automatic link checking using GitHub Actions and Lychee.
+# WHY: Shared Lychee configuration for documentation repositories.
 # REQ: Link checking MUST be reliable and CI-safe.
 # WHY: Configures Lychee link checker behavior for CI/CD.
 # OBS: Flat structure required by lychee v0.22+; no nested sections.
@@ -46,3 +46,6 @@ exclude = [
   "127\\.0\\.0\\.1", # WHY: Exclude local loopback
   "\\.local",        # WHY: Exclude local network domains
 ]
+
+# WHY: Exclude paths not relevant for link checking
+exclude_path = ["ALL", "ALL-PY", "ALL-PY-SRC", "ALL-COURSE", "ALL-COURSE-PY-SRC"]

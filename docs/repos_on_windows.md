@@ -1,5 +1,7 @@
 # Set Up Repos Folder on Windows
 
+<!-- markdownlint-disable MD024 -->
+
 This guide provides step-by-step instructions for completing required setup tasks
 on a Windows system using File Explorer.
 
@@ -58,3 +60,5 @@ If OneDrive is enabled, confirm that your `Repos` folder is not being synced.
 
 - **Accidentally saved to OneDrive?**
   Move the folder back to `C:\Repos` by dragging it in File Explorer.
+
+<!-- markdownlint-enable MD024 -->

@@ -1,19 +1,23 @@
 # ============================================================
 # pyproject.toml (Python project configuration)
 # ============================================================
+# Updated: 2026-08-11
 # REQ.PYTHON: Python projects MUST include pyproject.toml as the single source of truth.
 # WHY: Centralizes project configuration.
-# Python is used for Zensical documentation generation and development tooling,
-# even though the project itself is not a Python package.
+# CUSTOM: Update identity and build tool src folders.
+
+# ============================================================
+# SECTION 1: PROJECT IDENTITY (name, version, CUSTOM dependencies)
+# ============================================================
 
 [project]
 name = "applied-computing-foundations"
 readme = "README.md"
-requires-python = ">=3.14"
-version = "0.2.0"
+requires-python = ">=3.15"
+version = "0.9.1"
 
 # CUSTOM: Project metadata.
-authors = [{ name = "Denise Case", email = "dcase@nwmissouri.edu" }]
+authors = [{ name = "Denise M. Case", email = "dcase@nwmissouri.edu" }]
 description = "Documentation for computing foundations."
 keywords = ["applied computing", "foundations", "education", "analytics"]
 license-files = ["LICENSE"]
@@ -22,12 +26,13 @@ license-files = ["LICENSE"]
 # OBS: This toolkit uses only the Python standard library.
 dependencies = []
 
-[project.optional-dependencies]
+[dependency-groups]
+# WHY: Optional dependency groups keep the core install clean and focused.
 dev = [
     # REQ.DEV.DEPS: External packages used for linting, testing, type checking, etc.
     "pre-commit",
-    "validate-pyproject",
 ]
+
 docs = [
     # REQ.DOCS.DEPS: External packages used to generate project documentation.
     "mkdocstrings[python]",
@@ -39,6 +44,13 @@ docs = [
 "Repo" = "https://github.com/denisecase/applied-computing-foundations"
 "Issues" = "https://github.com/denisecase/applied-computing-foundations/issues"
 
+# === UV ===
+
 [tool.uv]
+# WHY: Install all dependency groups defined by this repository by default.
+# This keeps the canonical setup command identical across project types while
+# allowing each repository to declare only the tooling it actually needs.
+default-groups = "all"
+
 package = false # REQ.UV: Disable universal versioning for non-packages.
 # WHY: This project is not intended to be distributed as a package.

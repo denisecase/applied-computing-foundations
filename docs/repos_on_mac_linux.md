@@ -1,5 +1,7 @@
 # Set Up Repos Folder on Mac/Linux
 
+<!-- markdownlint-disable MD024 -->
+
 This guide provides step-by-step instructions for completing required setup tasks
 on a computer running macOS or Linux.
 
@@ -74,3 +76,5 @@ You may customize Finder or your file manager for easier navigation.
 
 - **Accidentally moved a file?**
   Use Finder or your file manager search feature to locate it.
+
+<!-- markdownlint-enable MD024 -->

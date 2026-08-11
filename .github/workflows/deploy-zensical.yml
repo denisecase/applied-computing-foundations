@@ -1,41 +1,35 @@
 # ============================================================
-# .github/workflows/deploy-zensical.yml (Deploy Docs)
+# .github/workflows/deploy-zensical.yml (ALL-PY-REPOS)
 # ============================================================
-# Updated: 2026-04-13
-#
-# WHY-FILE: Build and deploy documentation to GitHub Pages on pushes to main.
-#
+# Updated: 2026-06-27
+
+# WHY: Build and deploy documentation to GitHub Pages on pushes to main.
 # REQ: Repo Settings -> Pages -> Build and deployment -> Source:
 #      GitHub Actions
 # WHY: Without this setting, the deploy-pages action will fail with a 403.
-#
-# OBS: This workflow deploys only. Correctness of the build is validated
-#      by ci-python-zensical.yml before merging to main.
-# OBS: Deployment runs after CI passes on push to main, not on PRs.
-# WHY: PRs use CI to validate; deployment only happens on confirmed main commits.
 
+# Name shown in the repo Actions tab.
 name: Docs Deploy (Zensical)
 
 on:
   push:
-    branches: [main]    # WHY: Deploy on every confirmed push to main.
-  workflow_dispatch:     # WHY: Allow manual redeploy from Actions tab if needed.
+    branches: [main]  # WHY: Validate on every push to GitHub branch `main`.
+  workflow_dispatch:  # WHY: Allow manual trigger from Actions tab.
 
 permissions:
   contents: read        # WHY: Needed to checkout code.
   pages: write          # WHY: Required to deploy to GitHub Pages.
   id-token: write       # WHY: Required by deploy-pages for OIDC authentication.
 
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+  # WHY: GitHub Pages is a shared deployment target.
+  # OBS: Do not cancel an in-progress Pages deployment with another deployment.
+
 env:
   PYTHONUNBUFFERED: "1"     # WHY: Real-time log output in CI.
   PYTHONIOENCODING: "utf-8" # WHY: Consistent encoding across platforms.
-
-concurrency:
-  group: pages-${{ github.ref }}
-  cancel-in-progress: true
-  # WHY: Only one Pages deployment runs at a time per branch.
-  # OBS: A second push to main while deploying cancels the in-progress run.
-  #      This prevents partial or stale deployments from racing.
 
 jobs:
   docs:
@@ -43,7 +37,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30   # WHY: Fail fast if a step hangs unexpectedly.
     env:
-      UV_PYTHON: "3.14"   # WHY: Pin Python version for all steps in this job.
+      UV_PYTHON: "3.15"   # WHY: Pin Python version for all steps in this job.
 
     steps:
       # ============================================================
@@ -51,7 +45,7 @@ jobs:
       # ============================================================
 
       - name: A1) Checkout repository code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         # WHY: Required so all subsequent steps can access repo files.
 
       - name: A2) Configure GitHub Pages
@@ -66,19 +60,20 @@ jobs:
           cache-dependency-glob: "uv.lock"
           # WHY: Invalidate cache only when locked dependencies change.
 
-      - name: A4) Install Python 3.14
-        run: uv python install 3.14
+      - name: A4) Install Python ${UV_PYTHON} with uv
+        run: uv python install ${UV_PYTHON}
 
-      - name: A5) Install all dependencies
-        run: uv sync --extra dev --extra docs --upgrade
+      - name: A5) Install all dependencies with frozen versions (in uv.lock)
+        run: uv sync  --frozen
         # WHY: Docs extras required for Zensical build; dev extras for consistency.
+        # OBS: Deployment validates the committed lock file; it must not upgrade dependencies.
 
       - name: A6) Show tool versions
         run: |
           uv --version
           uv run python --version
           if [ -f "zensical.toml" ]; then
-            uv run zensical --version
+            uv run python -m zensical --version
           fi
         # WHY: Version output makes deployment logs easier to debug when tools change.
 
@@ -92,7 +87,7 @@ jobs:
             echo "zensical.toml not found; refusing to deploy." >> "$GITHUB_STEP_SUMMARY"
             exit 1
           fi
-          uv run zensical build
+          uv run python -m zensical build
         # WHY: Hard-fail if zensical.toml is missing rather than deploying nothing.
         # OBS: In CI (ci-python-zensical.yml) the missing config is a soft skip.
         #      Here it is a hard failure because a deploy without docs is wrong.

@@ -31,41 +31,41 @@ they describe how the project should behave.
 
 These three files belong in nearly every professional repository:
 
-### 1. `.editorconfig` - keeps files consistent no matter how they’re edited.
+### 1. `.editorconfig` - keeps files consistent regardless of editor
 
-  This file helps different editors agree on things like:
+This file helps different editors agree on things like:
 
-  - line endings
-  - indentation
-  - trailing spaces
+- line endings
+- indentation
+- trailing spaces
 
-  It prevents formatting noise when people use different tools.
+It prevents formatting noise when people use different tools.
 
-### 2. `.gitattributes` - keeps files consistent across operating systems.
+### 2. `.gitattributes` - keeps files consistent across operating systems
 
-  This file helps Git handle files correctly on:
+This file helps Git handle files correctly on:
 
-  - Windows
-  - macOS
-  - Linux
+- Windows
+- macOS
+- Linux
 
-  It prevents problems caused by different line endings and file-handling rules.
+It prevents problems caused by different line endings and file-handling rules.
 
-### 3. `.gitignore` - keeps unnecessary or unsafe files out of the repository.
+### 3. `.gitignore` - keeps unnecessary or unsafe files out of the repository
 
-  This file tells Git which files **not** to track, such as:
+This file tells Git which files **not** to track, such as:
 
-  - temporary files
-  - system files
-  - local settings
-  - secrets or credentials
+- temporary files
+- system files
+- local settings
+- secrets or credentials
 
-  It helps keep repositories clean, safe, and shareable.
+It helps keep repositories clean, safe, and shareable.
 
 ---
 
-## To Customize These Documents, Modify:
+## To Customize These Documents, Modify
 
 - `docs/` (folder with Markdown files)
-- `mkdocs.yaml` (in the root project folder)
+- `zensical.toml` (in the root project folder)
   - scroll to the end for the `nav` section

@@ -1,52 +1,50 @@
 # ============================================================
-# .github/workflows/links.yml (Lychee Link Checker)
+# .github/workflows/links.yml (ALL-REPOS)
 # ============================================================
-# Updated: 2026-04-13
+# Updated: 2026-08-08
 
-# WHY-FILE: Automated link checking.
-# OBS: Behavior is configured in lychee.toml in this repository.
-# OBS: Runs on pull requests and monthly on schedule; manual trigger always available.
+# WHY: Automated link checking.
+# OBS: Behavior is configured in .github/lychee.toml in this repository.
+# OBS: Runs monthly on schedule; manual trigger also available.
 
 name: Check Links
 
 on:
-  workflow_call: # WHY: Allow this workflow to be called by other workflows if needed
-  workflow_dispatch: # WHY: Manual trigger - always available
-  pull_request: # WHY: Validates PR links before merge
+  pull_request: # WHY: Validates PR links before merge.
   schedule:
-    - cron: "0 6 1 * *" # WHY: Runs monthly (1st of month)
+    - cron: "0 6 1 * *" # WHY: Runs monthly on the 1st.
+  workflow_call: # WHY: Allow this workflow to be called by other workflows if needed.
+  workflow_dispatch: # WHY: Manual trigger - always available.
 
 concurrency:
   # WHY: Prevent multiple simultaneous link checks on same ref
-  group: link-check-${{ github.ref || github.run_id }}
+  group: links-${{ github.ref || github.run_id }}
   cancel-in-progress: true
 
 permissions:
   contents: read # WHY: Needed to checkout code.
 
-env:
-  PYTHONUNBUFFERED: "1" # WHY: Real-time logging.
-  PYTHONIOENCODING: "utf-8" # WHY: Ensure UTF-8 encoding for international characters.
-  REPORT_PATH: "./lychee/out.md" # WHY: Predictable markdown report path for summary generation.
-
 jobs:
   lychee:
     name: Link checks
-    runs-on: ubuntu-latest # WHY: Linux environment matches most production deployments
-    timeout-minutes: 20 # WHY: Prevent hanging jobs. If over time, likely stuck.
+    runs-on: ubuntu-latest # WHY: Stable runner for lychee-action + bash steps.
+    timeout-minutes: 10 # WHY: Prevent hanging jobs.
 
     steps:
-      - name: 1) Checkout repository code
-        uses: actions/checkout@v6
+
+      # === ASSEMBLE ===
+
+      - name: A1) Checkout repository code
+        uses: actions/checkout@v7
         # WHY: Required so Lychee can inspect repository files.
 
-      - name: 2) Run Lychee
-        uses: lycheeverse/lychee-action@v2.8.0
+      # === BASIC CHECKS ===
+
+      - name: B1) Run Lychee link checker
+        uses: lycheeverse/lychee-action@v2.9.0
         with:
           args: >
             --config .github/lychee.toml
-            --verbose
-            --no-progress
             './**/*.md'
             './**/*.html'
             './**/*.yml'

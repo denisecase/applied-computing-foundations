@@ -2,7 +2,7 @@
 # .github/dependabot.yml (Check for GitHub Actions updates)
 # ============================================================
 # REQ.PROJECT: This repository SHOULD track GitHub Actions updates automatically.
-# WHY-FILE: GitHub Actions are executable dependencies and may receive security or behavior updates.
+# WHY: GitHub Actions are executable dependencies and may receive security or behavior updates.
 # OBS: Language-level dependencies (e.g., Python packages) are upgraded manually.
 # OBS: GitHub Actions are the only dependency class automated here.
 # ALT: Dependabot could be omitted if workflows are pinned and reviewed manually.
@@ -21,4 +21,4 @@ updates:
     schedule:
       interval: "monthly" # ALT: Use "weekly" for higher security when needed
     commit-message:
-      prefix: "(deps)"  # WHY: enable filtering by commit type
+      prefix: "(deps)" # WHY: enable filtering by commit type

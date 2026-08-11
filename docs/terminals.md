@@ -26,18 +26,17 @@ We differentiate:
 
 Both behave the same for the commands shown here.
 
-
 ## How to Open a Terminal
 
 ### On Your Machine
+
 - **Windows:** Start Menu → PowerShell
 - **macOS:** Applications → Utilities → Terminal
 - **Linux:** Applications → Terminal
 
 ### In VS Code
+
 - Use the menu: **Terminal → New Terminal**
-
-
 
 ## The Current Folder Matters
 
@@ -45,8 +44,6 @@ Terminal commands always run in a **current folder** (also called the working di
 Many errors happen when commands are run in the wrong folder.
 
 Know **where you are** before running commands.
-
-
 
 ## Essential Cross-Platform Commands
 
@@ -61,8 +58,6 @@ pwd
 ```
 
 Use this to confirm you are in the expected directory.
-
-
 
 ### `ls` - List Contents
 
