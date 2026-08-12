@@ -38,4 +38,4 @@ These pages provide foundational vocabulary so the professional Python guide mak
 
 ## Next Step
 
-- [**Pro Analytics 02: Guide to Professional Python](https://denisecase.github.io/pro-analytics-02/).
+- [**Pro Analytics 02: Guide to Professional Python**](https://denisecase.github.io/pro-analytics-02/).
