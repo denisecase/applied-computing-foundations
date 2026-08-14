@@ -45,6 +45,12 @@ Follow these steps when creating a new release.
 ### Task 2. Validate
 
 ````shell
+uvx pup-clean --delete
+uvx pup-up
+.\sit.ps1
+
+# OR
+
 uv lock --upgrade
 uv sync
 uv run pre-commit install

@@ -8,7 +8,7 @@
     // === PYTHON DEVELOPMENT ===
     // ============================================================
     "ms-python.python", // Core Python support
-    "ms-python.vscode-pylance", // Fast IntelliSense and type checking
+    "astral-sh.ty", // Fast type checking
     "charliermarsh.ruff", // Modern formatting and linting (replaces black + isort + flake8)
     // ============================================================
     // === JUPYTER NOTEBOOKS ===
@@ -57,6 +57,7 @@
     // ============================================================
     "esbenp.prettier-vscode", // We use ruff for Python, built-in formatters for JSON/YAML
     "ms-pyright.pyright", // Use Pylance (Pyright engine) instead to avoid duplicate diagnostics
+    "ms-python.vscode-pylance", // Fast IntelliSense and type checking
     "ms-python.black-formatter", // We use ruff format instead
     "ms-python.isort", // We use ruff for import sorting
     "ms-vscode.live-server", // Not needed for Python/analytics projects
