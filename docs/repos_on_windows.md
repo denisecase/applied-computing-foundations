@@ -19,9 +19,6 @@ You only need to create the **Repos** folder once.
 Follow the Windows instructions in:
 [**Pro Analytics 02: Set Up Machine**](https://denisecase.github.io/pro-analytics-02/workflow-a-set-up-machine/)
 
-That guide also explains how to show hidden files and file extensions
-needed for professional project work.
-
 ---
 
 [◄ Back to Home](index.md)

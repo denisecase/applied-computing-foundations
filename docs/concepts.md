@@ -4,7 +4,7 @@
 use two asterisks instead of backticks
 for code. -->
 
-## Operating Systems & Environments
+## Operating Systems and Environments
 
 An operating system provides the core environment in which files,
 applications, development tools, and other software run.
@@ -59,11 +59,11 @@ Examples include PowerShell on Windows, zsh on macOS, and bash on Linux.
 A GUI, or graphical user interface, lets you interact with the computer
 visually, often using a mouse.
 
-### Command line (CLI)
+### Command line interface (CLI)
 
-A command line, or CLI, lets you work by typing commands rather than clicking.
+A command line interface, or CLI, lets you work by typing commands rather than clicking.
 
-## Files & Folders
+## Files and Folders
 
 Files and folders organize the information stored on a computer.
 
@@ -74,7 +74,7 @@ a computer.
 
 ### Path
 
-A path is the address of a file or folder.
+A path is the **address** of a file or folder.
 
 For example, a path might be **C:\Repos** on Windows or **~/Repos** on macOS
 and Linux.
@@ -88,20 +88,12 @@ terminal is "in" right now.
 
 A file name is the full name of a file, including its extension.
 
-Sometimes the portion before the extension is also called the file name when
-the context is clear.
-
 ### File extension
 
 A file extension is the suffix at the end of a file name that indicates the
 file type.
 
 Examples include **doc**, **xls**, **md**, and **html**.
-
-### Hidden files and folders
-
-Hidden files and folders are files and folders that are not shown by default
-in file managers.
 
 ## User Interfaces
 

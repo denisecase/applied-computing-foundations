@@ -17,27 +17,19 @@ including:
 ## Target
 
 This overview is for capable professionals new to terminals, file paths, and repositories.
-These pages provide foundational information before the professional Python guide.
+It provides foundational information before
+[the professional Python guide](https://denisecase.github.io/pro-analytics-02/).
 
 ## Contents
 
 1. [Key Concepts](concepts.md).
-2. [Working with Terminals](terminals.md): open a terminal, know your current
-   folder, and move around with **pwd**, **ls**, and **cd**.
-3. [Git and GitHub](git_and_github.md): what a repository is, and how the local
-   and remote copies relate (clone, commit, push, pull).
-4. Create a **Repos** Folder: one folder for holding git repositories:
+2. [Working with Terminals](terminals.md): open a terminal, print current
+   directory, list folder contents, change directory, and more.
+3. [Git and GitHub](git_and_github.md): what a repository is, and how to
+   keep our local copy and the GitHub copy synchronized.
+4. Create a **Repos** Folder for holding git repositories:
    [Mac/Linux](repos_on_mac_linux.md) or [Windows](repos_on_windows.md).
 5. [How to Take Screenshots](how_to_take_screenshots.md).
-
-## Skill Check
-
-- **Open a machine terminal** directly on your computer.
-- **Open a VS Code terminal** integrated into the editor.
-- Say which **folder** your terminal is currently in, and **cd** into another.
-- Explain briefly what **git clone**, and **add**, **commit**, and **push** do.
-- Create a **Repos** folder that is **not cloud-synced**.
-- See hidden files and folders inside a project (like **.git**) .
 
 ## Next Step
 
