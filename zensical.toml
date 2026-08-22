@@ -1,7 +1,7 @@
 # ============================================================
 # zensical.toml (ALL-PY-REPOS)
 # ============================================================
-# Updated: 2026-06-27
+# Updated: 2026-08-22
 #
 # REQ: Python tooling only (no src) repositories SHOULD provide documentation configuration.
 # BUT Do not need mkdocs plugs used for src/ api generation.
@@ -17,12 +17,20 @@ site_description = "Project Documentation" # CUSTOM: Set the description.
 docs_dir = "docs" # source directory for documentation markdown files
 site_dir = "site" # output directory for generated site (ignored by Git; not in repo)
 edit_uri = "edit/main/docs/" # "Edit this page" links (GitHub)
+extra_javascript = [
+    "javascripts/read-aloud.js", # CUSTOM: adds optional Read Aloud functionality to pages.
+    "javascripts/concept-quiz.js", # CUSTOM: adds optional Concept Quiz functionality to pages.
+]
 
 [project.extra]
 # WHY: Social links provide easy access to project repositories and profiles.
 social = [
     {icon = "fontawesome/brands/github", link = "https://github.com/denisecase/applied-computing-foundations" },
 ]
+
+[project.markdown_extensions]
+md_in_html = {} # WHY: Allow Markdown inside HTML blocks when the opening tag includes `markdown`, e.g. <details markdown>...</details>
+
 
 # ------------------------------------------------------------
 # Plugins
@@ -47,7 +55,8 @@ features = [
 # ------------------------------------------------------------
 # Navigation
 # ------------------------------------------------------------
-# Folder-based navigation is an optional alternative.
+# If no explicit navigation is provided,
+# then folder-based navigation will be used automatically.
 
 nav = [
     { "Home" = "index.md" },

@@ -1,68 +1,27 @@
 # Set Up Repos Folder on Windows
 
-<!-- markdownlint-disable MD024 -->
+<!-- On a page that could be read aloud,
+use two asterisks instead of backticks
+for code. -->
 
-This guide provides step-by-step instructions for completing required setup tasks
-on a Windows system using File Explorer.
+We recommend storing all repositories in a single folder named **Repos**.
 
-We recommend storing all repositories in a single folder named `Repos`
-that is NOT automatically synced.
+On Windows, use: **C:\Repos**.
 
-[Pro Analytics 02: Guide to Professional Python](https://denisecase.github.io/pro-analytics-02/)
-walks through this as part of machine setup.
-You only need to create the `Repos` folder once - either here or there.
+The **Repos** folder should be directly on the **C:** drive and
+must **NOT** be inside **Documents**, **OneDrive**,
+or another cloud-synced location.
 
-## Task 1: Create `C:\Repos` (do not use Documents/OneDrive)
+Git projects can get very large, and automatic cloud syncing can interfere
+with project files and development tools.
 
-Windows often syncs the `Documents` folder with OneDrive, which can cause confusion
-and slowdowns when working with project repositories.
-Instead, create a local `Repos` folder that is not automatically synced.
+You only need to create the **Repos** folder once.
+Follow the Windows instructions in:
+[**Pro Analytics 02: Set Up Machine**](https://denisecase.github.io/pro-analytics-02/workflow-a-set-up-machine/)
 
-### Steps
+That guide also explains how to show hidden files and file extensions
+needed for professional project work.
 
-1. Open **File Explorer**.
-2. Navigate to **This PC** > **Local Disk (C:)**.
-3. Create a new folder in the root of `C:\` named **Repos**.
+---
 
-Keep all your project repositories in `C:\Repos`, not in `Documents` or other
-folders that may be syncing with OneDrive.
-
-## Task 2: Organize Repositories Inside `C:\Repos`
-
-Each GitHub repository you use will have its own folder inside `C:\Repos`.
-
-### Verify
-
-- Confirm the folder path is exactly `C:\Repos`.
-- All cloned repositories should live directly inside this folder
-  (for example: `C:\Repos\applied-computing-foundations`).
-
-## Task 3: Show File Extensions and Hidden Items
-
-Hidden files (such as `.git`) and file extensions are commonly used in
-computing and programming work and must be visible.
-
-### Steps
-
-1. Open **File Explorer**.
-2. Click the **View** tab on the ribbon.
-3. In the **Show/Hide** group, check **File name extensions**.
-4. In the **Show/Hide** group, check **Hidden items**.
-
-## Task 4: OPTIONAL: Confirm OneDrive Is Not Syncing `Repos`
-
-If OneDrive is enabled, confirm that your `Repos` folder is not being synced.
-
-### Steps
-
-1. Check the OneDrive icon in the taskbar (lower right).
-2. Right-click the icon and select **Settings**.
-3. Under the **Account** tab, review the folders being synced.
-4. Ensure the `Repos` folder (`C:\Repos`) is not listed.
-
-## Tips & Troubleshooting
-
-- **Accidentally saved to OneDrive?**
-  Move the folder back to `C:\Repos` by dragging it in File Explorer.
-
-<!-- markdownlint-enable MD024 -->
+[◄ Back to Home](index.md)

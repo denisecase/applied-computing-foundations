@@ -1,94 +1,59 @@
 # Git and GitHub
 
-- **Git** is a tool that records the history of a  project - every change, over time.
+<!-- On a page that could be read aloud,
+use two asterisks instead of backticks
+for code. -->
+
+## Git and GitHub Basics
+
+Git and GitHub work together to record, store, share, and collaborate on projects.
+
+- **Git** is a tool that records the history of a project,
+  including changes over time.
+  We install Git locally on our machine.
+
 - **GitHub** is a website that stores a copy of a project online.
+  It is a cloud service for saving, sharing, and collaborating on projects
+  and enables work from multiple contributors and machines.
 
-Git is a tool we install on our machine locally.
-GitHub is a cloud service for saving, sharing, and collaborating on projects.
-GitHub enables work from multiple contributors and machines.
+## Repositories
 
-## Repositories (aka Repos)
-
-A repository (often called a _repo_) is a folder that contains:
-
-- project files
-- a record of changes over time
-- metadata used by tools like Git and GitHub
+A repository, often called a **repo**, is a project folder tracked by Git.
 
 Typically, every project lives in its own repository folder.
-We can store many repos in a single folder named `Repos`.
+We can store many repos in a single folder, e.g. one named **Repos**.
+
+This folder **must NOT automatically sync contents to the cloud**.
+Git projects can get very large (we often download lots of free code) and
+automatic syncing can kill a machine.
 
 ## How to Create a Repos/ Folder
 
 - [On Mac/Linux Machines](./repos_on_mac_linux.md)
 - [On Windows Machines](./repos_on_windows.md)
 
-## Local and Remote: Keeping a Project in Sync
+## Local and Remote
 
-With git, **there are (at least) two copies of a project:**
+With Git, there are at least two copies of a project:
 
-- The **remote** copy lives on GitHub, in the cloud.
-- The **local** copy lives on a computer, often inside a `Repos` folder.
+- The **local** copy is on your computer.
+- The **remote** copy is on GitHub.
 
-Four commands move work between them.
-It helps to recognize what each command does.
+A few Git commands keep them in sync:
 
-| Command    | Plain-English meaning                                                |
-| ---------- | -------------------------------------------------------------------- |
-| **clone**  | Make the first local copy of a GitHub repo, into the `Repos` folder. |
-| **commit** | Save a snapshot of changes to the local history.                     |
-| **push**   | Send local changes (commits) up to GitHub.                           |
-| **pull**   | Bring new changes down from GitHub into the local copy.              |
+- **git clone** - make the first local copy of a GitHub repository
+- **git add** - add changes to Git's history tracking
+- **git commit** - save a snapshot of changes with a message to locate it in history
+- **git push** - send local commits back up to GitHub
+- **git pull** - fetch any new changes from GitHub and merge into local history
 
-A normal working rhythm is:
+Use **git clone** once to get a copy on a local machine.
+After that, a common workflow is:
 
-- **pull** the latest changes from GitHub
-- make changes locally on a computer
-- **commit** the changes with a helpful message
-- **push** the committed changes back up to GitHub
+1. **git pull** down any changes from GitHub
+2. Make changes.
+3. **git add, commit, push** changes back up to GitHub
 
-A repo is cloned once to get a copy on a local machine.
-After that, we git add, commit, and push back up to GitHub.
+---
 
-Because we can make easy updates directly in GitHub (using any web browser),
-we always **git pull** before making changes locally.
-
-Starting to make changes locally with unsynced changes in GitHub can create
-a **merge conflict**, a special challenge that is better avoided.
-**Always git pull first** when working locally.
-
-## Project Configuration Files
-
-When working with code projects,
-we must be able to view **file extensions** and **hidden files and folders**.
-
-Files that start with a dot (.) are often configuration files.
-They describe how the project should behave.
-
-For example, some key files belong in nearly every professional repository.
-
-### 1. `.editorconfig`: keeps files consistent regardless of editor
-
-This file prevents formatting noise when people use different tools.
-It helps different editors agree on things like:
-
-- line endings
-- indentation
-- trailing spaces
-
-### 2. `.gitattributes`: keeps files consistent across operating systems
-
-This file prevents problems caused by different line endings and file-handling rules.
-It helps Git handle files correctly on Windows, macOS, and Linux.
-
-### 3. `.gitignore`: keeps unnecessary or unsafe files out of the repository
-
-This file helps keep repositories clean, safe, and shareable.
-The project history we care about typically involves the files we write,
-rather than the supporting files that may be very large and can be easily regenerated.
-This file tells Git which files not to track, and includes:
-
-- temporary files
-- system files
-- local settings
-- secrets or credentials
+[◄ Back to Home](index.md)

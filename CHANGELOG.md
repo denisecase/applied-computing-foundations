@@ -13,10 +13,25 @@ and this project adheres to **[Semantic Versioning](https://semver.org/spec/v2.0
 
 ---
 
+## [0.9.2] - 2026-08-22
+
+### Changed
+
+- streamlined content
+
+### Added
+
+- added Zensical read-aloud
+- added auto quiz on concepts
+
+---
+
 ## [0.9.1] - 2026-08-11
 
-- cleaned repo with `uvx pup-clean` and `uvx pup-clean --delete`
-- updated support files with `uvx pup-up` and `uvx pup-up --write`, BACK UP ZENSICAL navigation first.
+### Changed
+
+- cleaned repo with **uvx pup-clean** and **uvx pup-clean --delete**
+- updated support files with **uvx pup-up** and **uvx pup-up --write**
 - updated to 3.15
 - minor fixes
 
@@ -36,31 +51,28 @@ and this project adheres to **[Semantic Versioning](https://semver.org/spec/v2.0
 
 Follow these steps when creating a new release.
 
-### Task 1. Update release metadata
+### Task 1. Update release metadata for Python non-src projects
 
 1. Update `CITATION.cff`: change `version` and `date-released`
 2. Update `CHANGELOG.md`: move from unreleased, add entry, update links
-3. Update `pyproject.toml`: update `[tool.hatch.version] fallback-version`
+3. Update `pyproject.toml`: update `version`
 
 ### Task 2. Validate
 
 ````shell
 uvx pup-clean --delete
-uvx pup-up
 .\sit.ps1
 
 # OR
 
 uv lock --upgrade
 uv sync
-uv run pre-commit install
 
 git add -A
 uv run pre-commit run --all-files
 # rerun if changes made
 uv run pre-commit run --all-files
 
-npx markdownlint-cli2 --fix
 uvx cffconvert --validate
 
 uv run python -m zensical build
@@ -90,7 +102,8 @@ git push origin :refs/tags/vX.Z.Y
 
 ## Links
 
-[Unreleased]: https://github.com/pup-pack/pup-clean/compare/v0.9.1...HEAD
-[0.9.1]: https://github.com/pup-pack/pup-clean/releases/tag/v0.9.1
+[Unreleased]: https://github.com/denisecase/applied-computing-foundations/compare/v0.9.2...HEAD
+[0.9.2]: https://github.com/denisecase/applied-computing-foundations/releases/tag/v0.9.2
+[0.9.1]: https://github.com/denisecase/applied-computing-foundations/releases/tag/v0.9.1
 
 <!-- markdownlint-enable MD024 -->

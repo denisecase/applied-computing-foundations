@@ -1,17 +1,19 @@
 # Working with Terminals (Foundations)
 
-> Introduction to the **terminal** (also called the command line or shell).
+<!-- On a page that could be read aloud,
+use two asterisks instead of backticks
+for code. -->
+
+A **terminal** (also called the command line or shell)
+is a text-based interface where you type commands and see results.
 
 Terminals are a professional tool used across operating systems to run commands,
 navigate folders, and launch programs.
 
-These basics apply to **Windows**, **macOS**, and **Linux**.
+Terminal commands are reliable, can be easily copied-and-pasted,
+can save time, and help prevent mistakes.
 
----
-
-## What Is a Terminal?
-
-A terminal is a text-based interface where you type commands and see results.
+## Terminal Types By Platform
 
 Common terminals by platform:
 
@@ -19,59 +21,86 @@ Common terminals by platform:
 - **macOS:** Terminal (zsh)
 - **Linux:** Terminal (bash or similar)
 
-We differentiate:
+## Terminal Types By Location
+
+There are two key locations for opening terminals.
+Sometimes we need:
 
 - a **machine terminal** (opened directly on the computer)
 - a **VS Code terminal** (opened inside the VS Code editor)
 
-Both behave the same for the commands shown here.
+Both behave the same for the following commands.
 
-## How to Open a Terminal
+## How to Open a Machine Terminal
 
-### On Your Machine
+- **Windows:** Start Menu / PowerShell
+- **macOS:** Applications / Utilities / Terminal
+- **Linux:** Applications / Terminal
 
-- **Windows:** Start Menu → PowerShell
-- **macOS:** Applications → Utilities → Terminal
-- **Linux:** Applications → Terminal
+## How to Open a Machine Terminal from VS Code
 
-### In VS Code
+- Use the VS Code menu: **Terminal / New Terminal**
 
-- Use the menu: **Terminal → New Terminal**
+## Know The Working Directory
 
-## The Current Folder Matters
-
-Terminal commands always run in a **current folder** (also called the working directory).
-Many errors happen when commands are run in the wrong folder.
+Terminal commands always run in the **working directory** - the current folder.
 
 Know **where you are** before running commands.
+Running a command when in an unexpected location will not work and can cause
+significant errors.
 
-## Essential Cross-Platform Commands
+## Essential Commands
 
-The following commands work the same on Windows, macOS, and Linux.
+1. Use **pwd** to print working directory
+2. Use **ls** to list folder contents
+3. Use **cd** to change directory
+4. Use **clear** to keep the terminal readable
+5. Use **Up Arrow** key and **Down Arrow** key to scroll through past commands
 
-### `pwd` - Where am I?
+## More About Essential Commands
+
+### pwd (Print Working Directory)
 
 Prints the full path of the current folder.
+Use this to confirm you are in the expected directory.
 
 ```shell
 pwd
 ```
 
-Use this to confirm you are in the expected directory.
-
-### `ls` - List Contents
+### ls (List Contents)
 
 Lists files and folders in the current directory.
+Use this to check for files like `README.md` or project folders.
 
 ```shell
 ls
 ```
 
-Use this to check for files like `README.md` or project folders.
+### cd (Change directory)
 
----
+Moves into another folder.
 
-## Paths
+```shell
+cd folder_name
+```
+
+### clear (Clear the screen)
+
+Clears previous output from the terminal.
+This does **not** delete files or undo commands.
+It only makes the terminal easier to read.
+
+```shell
+clear
+```
+
+### Up Arrow Key and Down Arrow Key
+
+Use the **UP ARROW** and **DOWN ARROW** in the terminal
+to scroll through past commands.
+
+## Terminal Path Abbreviations
 
 A **path** is the address of a file or folder.
 There are two kinds of paths:
@@ -84,57 +113,16 @@ There are two kinds of paths:
 
 Useful shorthands:
 
-- `~` means your home folder (Mac/Linux).
-- `.` means the current folder; `..` means the folder one level up.
-- Windows separates folders with `\`; Mac/Linux use `/`. Most tools accept `/`
-  on all three, which is why you will see it most often.
+- **~** means your home folder (Mac/Linux).
+- **.** means the current folder;
+- **..** means the folder one level up.
 
-So `cd ~/Repos` means "go to the Repos folder in my home directory," and
-`cd ..` means "go up one level."
+Windows separates folders with a backslash while Mac/Linux use a forward slash.
+Most tools accept **/**.
 
-### `cd` - Change directory
-
-Moves into another folder.
-
-```shell
-cd folder_name
-```
-
-Use `ls` first to see available folder names.
+So **cd ~/Repos** means "go to the Repos folder in my home directory," and
+**cd ..** means "go up one level."
 
 ---
 
-### `code .` - Open VS Code Here
-
-Opens **VS Code** in the current folder.
-
-```shell
-code .
-```
-
-This is the **recommended way** to open projects.
-It ensures VS Code, the terminal, and the project are aligned.
-
----
-
-### `clear` - Clear the screen
-
-Clears previous output from the terminal.
-
-```shell
-clear
-```
-
-This does **not** delete files or undo commands.
-It only makes the terminal easier to read.
-
----
-
-## Suggestions
-
-1. Use `pwd` to confirm where you are
-2. Use `ls` to see folder contents
-3. Use `code .` to open the project
-4. Use `clear` to keep the terminal readable
-
-Terminal commands are reliable and often save time and help prevent mistakes.
+[◄ Back to Home](index.md)

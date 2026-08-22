@@ -9,11 +9,12 @@
 # USAGE: See https://citation-file-format.github.io/ for details.
 
 cff-version: "1.2.0"
+message: "If you use this project, please cite it as described in this file."
 type: software
 
-title: "Applied Computing Foundations"
-version: "0.9.1"
-date-released: "2026-08-11"
+title: "applied-computing-foundations"
+version: "0.9.2"
+date-released: "2026-08-22"
 
 authors:
   - family-names: Case
@@ -26,42 +27,26 @@ url: "https://denisecase.github.io/applied-computing-foundations/"
 license: MIT
 
 abstract: >
-  Foundational, cross-cutting computing skills for working with file systems,
-  command-line environments, shells, and repositories.
-  This project focuses on practical computing fluency independent of
+  Applied computing foundations, including how to work with terminals,
+  a brief introduction to Git and GitHub, how to set up a place for
+  project repositories, and how to take screenshots.
+  This project focuses on practical computing skills, independent of
   any specific programming language or analytics framework.
 
 keywords:
-  # domain
+  - applied-computing
   - computing-foundations
-  - file-systems
   - terminal
   - command-line
-  - cli
-  - shells
-
-  # audience
-  - education
-  - teaching
-  - learning
-  - practitioners
-  - computer-science-education
-  - software-engineering-education
-
-  # practices
-  - cross-platform
-  - developer-fluency
-  - non-language-specific
-  - professional-practice
-
-  # tools and ecosystems
+  - file-systems
+  - repositories
   - git
   - github
-  - pre-commit
-  - open-source
   - vscode
   - powershell
   - zsh
   - bash
-
-message: "If you use this project, please cite it as described in this file."
+  - cross-platform
+  - developer-tools
+  - professional-practice
+  - computing-education
