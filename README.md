@@ -185,7 +185,7 @@ If VS Code still does not recognize the environment or newly installed tools:
 
 ## Annotations
 
-- [.annotations/annotations.md](./.annotations/annotations.md)
+[.annotations/annotations.md](./.annotations/annotations.md)
 
 ## Citation
 
