@@ -113,13 +113,13 @@ If successful, you'll see a new `.venv` folder appear in the root project folder
 Install and run pre-commit checks (twice if necessary as shown below):
 
 ```shell
-uv run pre-commit install
-uv run pre-commit autoupdate
+uvx prek install --force
+uvx prek update
 
 git add -A
-uv run pre-commit run --all-files
+uvx prek run --all-files
 # repeat if changes were made by pre-commit tasks
-uv run pre-commit run --all-files
+uvx prek run --all-files
 ```
 
 ### Daily Workflow (Working With Python Project Code)

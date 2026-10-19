@@ -44,13 +44,13 @@ uv python install
 uv lock --upgrade
 uv sync
 
-uv run pre-commit install
-uv run pre-commit autoupdate
+uvx prek install --force
+uvx prek update
 
 git add -A
-uv run pre-commit run --all-files
+uvx prek run --all-files
 # repeat if changes were made
-uv run pre-commit run --all-files
+uvx prek run --all-files
 
 # build docs
 uv run python -m zensical build

@@ -74,7 +74,7 @@ jobs:
         # WHY: Version output makes CI logs easier to debug when tools change.
 
       - name: A5) Run pre-commit on all files
-        run: uv run pre-commit run --all-files
+        run: uvx prek run --all-files
         # WHY: Run the same repo hygiene checks used locally.
         # OBS: A clean commit should already pass this without file changes.
         #      If a hook changes files in CI, the job fails because the repo

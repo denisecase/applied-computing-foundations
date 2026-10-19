@@ -22,7 +22,7 @@ It provides foundational information before
 
 ## Contents
 
-1. [Key Concepts](concepts.md).
+1. [Key Concepts](glossary.md).
 2. [Working with Terminals](terminals.md): open a terminal, print current
    directory, list folder contents, change directory, and more.
 3. [Git and GitHub](git_and_github.md): what a repository is, and how to

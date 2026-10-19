@@ -1,0 +1,9 @@
+default_students = 40
+
+[blocks]
+"2026-fall-1" = 40
+"2026-fall-2" = 45
+"2027-spring-1" = 40
+"2027-spring-2" = 40
+"2027-summer-1" = 40
+"2027-summer-2" = 40

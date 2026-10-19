@@ -13,11 +13,11 @@
 #
 # OPTIONAL LOCAL USAGE (keep tools updated):
 #   uv self update
-#   uv run pre-commit install
-#   uv run pre-commit autoupdate
+#   uvx prek install --force
+#   uvx prek update
 #
 # OPTIONAL LOCAL USAGE (run all hooks on all git-tracked files):
-#   uv run pre-commit run --all-files
+#   uvx prek run --all-files
 #   The first time, it may indicate errors / fixes,
 #   So just re-run the command (up arrow) and it often goes all green.
 #

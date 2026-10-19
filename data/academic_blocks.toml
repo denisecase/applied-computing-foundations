@@ -1,0 +1,32 @@
+timezone = "America/Chicago"
+source = "https://www.nwmissouri.edu/registrar/calendar.htm"
+
+[[blocks]]
+id = "2026-fall-1"
+start = 2026-08-24
+end = 2026-10-09
+
+[[blocks]]
+id = "2026-fall-2"
+start = 2026-10-19
+end = 2026-12-04
+
+[[blocks]]
+id = "2027-spring-1"
+start = 2027-01-11
+end = 2027-02-26
+
+[[blocks]]
+id = "2027-spring-2"
+start = 2027-03-08
+end = 2027-04-23
+
+[[blocks]]
+id = "2027-summer-1"
+start = 2027-05-10
+end = 2027-06-25
+
+[[blocks]]
+id = "2027-summer-2"
+start = 2027-06-28
+end = 2027-08-13
